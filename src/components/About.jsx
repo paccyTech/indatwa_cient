@@ -99,7 +99,7 @@ function About() {
         <h2>Meet Our Management Team</h2>
         <div className="team-members">
           <div className="member-card">
-            <img src="/team.jpeg" alt="Gakuru Obby" />
+            <img src="/about-founder.jpeg" alt="Gakuru Obby" />
             <h3>Gakuru Obby</h3>
             <p>Founder & Creative Director</p>
           </div>
