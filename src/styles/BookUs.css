@@ -1,0 +1,86 @@
+.booking-form {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Left Side: Image */
+.booking-image {
+  flex: 1;
+  background: url('/about.jpg') no-repeat center center;
+  background-size: cover;
+  
+}
+
+/* Right Side: Form */
+.booking-form form {
+  flex: 1;
+  background-color: white;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form h2 {
+  margin-bottom: 30px;
+  color: #001f4d;
+  font-size: 28px;
+  text-align: center;
+}
+
+.booking-form input {
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.booking-form button {
+  padding: 12px;
+  background-color: #001f4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.booking-form button:hover {
+  background-color: #003580;
+}
+
+/* Feedback Message */
+.form-message {
+  margin: 10px 0;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.form-message.success {
+  color: green;
+}
+
+.form-message.error {
+  color: red;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .booking-form {
+    flex-direction: column;
+  }
+
+  .booking-image {
+    height: 200px;
+    width: 100%;
+  }
+
+  .booking-form form {
+    padding: 30px 20px;
+  }
+}

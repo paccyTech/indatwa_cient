@@ -1,0 +1,241 @@
+/* Main Navbar Styling */
+.navbar {
+  padding: 0.8rem 1.5rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Solid background on scroll */
+.navbar.navbar-bg {
+  background-color: whitesmoke;
+  backdrop-filter: none;
+}
+
+/* Navbar container */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* ensures absolute inside works */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #000054;
+  gap: 0.5rem;
+  user-select: none;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Navigation links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Individual link style */
+.nav-links a {
+  text-decoration: none;
+  color: rgb(0, 0, 56);
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  /* For accessibility */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+  color: #b91c1c;
+  font-weight: 500;
+  background-color: rgba(185, 28, 28, 0.1);
+}
+
+/* Hamburger menu for mobile */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1100;
+  padding: 0.5rem 0.8rem; /* Increased tap area */
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+  background-color: rgba(185, 28, 28, 0.15);
+  outline: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(249, 250, 251, 0.98); /* Slightly more opaque */
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition:
+      max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* For better animation, consider JS to toggle height:auto */
+  }
+
+  .nav-links.open {
+    max-height: 100vh; /* Increased max-height to accommodate more links */
+    padding: 1rem 1rem 1.5rem;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 1rem 0; /* Increased padding for finger-friendly taps */
+    font-size: 1rem; /* Better readability on mobile */
+  }
+}
+
+/* Tablet View (Intermediate) */
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.6rem 1rem;
+  }
+
+  .logo {
+    font-size: 1.05rem; /* Slightly increased from 1rem for better legibility */
+  }
+
+  .nav-links a {
+    padding: 0.75rem 0; /* Slightly more padding for tap targets */
+    font-size: 1rem; /* Increased font size for accessibility */
+  }
+
+  .menu-toggle {
+    font-size: 1.7rem; /* Slightly bigger for easier tap */
+    padding: 0.6rem 0.9rem;
+  }
+}
+
+/* Floating Contact Sidebar */
+.floating-sidebar {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background-color: #111827;
+  color: white;
+  border-radius: 6px 0 0 6px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Individual Colors */
+.sidebar-btn.call {
+  background-color: #2563eb; /* Blue */
+}
+
+.sidebar-btn.whatsapp {
+  background-color: #25d366;
+}
+
+.sidebar-btn.linkedin {
+  background-color: #0a66c2;
+}
+
+/* Support button style */
+.support-btn {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: white; /* adjust to your theme */
+  background-color: aliceblue;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.support-btn:hover {
+  background-color: darkblue; /* darker accent on hover */
+  color: white;
+}
+
+.support-btn svg {
+  vertical-align: middle;
+  /* margin-right is set inline for better control */
+}

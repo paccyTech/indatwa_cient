@@ -1,0 +1,210 @@
+.footer {
+  background-color: black;
+  color: #ffffff;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.footer.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-top h2 {
+  margin-bottom: 10px;
+  font-size: 28px;
+  color: #ffcc00;
+  animation: slideInFromLeft 1s ease forwards;
+  text-align: center;
+}
+
+.footer-tagline {
+  font-size: 14px;
+  font-style: italic;
+  color: #ddd;
+  animation: slideInFromRight 1s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.footer.fade-in .footer-tagline {
+  opacity: 1;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 20px 0;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffcc00;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.footer-socials a {
+  color: #ffffff;
+  font-size: 18px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #ffcc00;
+  animation: pulse 1s infinite;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 13px;
+  color: #ccc;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.9s;
+}
+
+.powered-by a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: 500;
+  transition: text-decoration 0.3s ease;
+}
+
+.powered-by a:hover {
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+    margin-top: 15px;
+  }
+}
+.footer-bottom {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  
+  color: #fff;
+}
+
+.footer-bottom .powered-by {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Admin button hidden by default */
+.admin-access {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show on hover of footer-bottom */
+.footer-bottom:hover .admin-access {
+  opacity: 1;
+}
+
+.admin-btn {
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  background-color: transparent;
+  border: 1px solid #ffd700;
+  color: #ffd700;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.admin-btn:hover {
+  background-color: #ffd700;
+  color: #0b0c2a;
+}
