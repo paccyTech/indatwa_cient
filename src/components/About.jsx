@@ -17,7 +17,7 @@ function About() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,  // Show 3 images at a time on desktop
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -31,7 +31,16 @@ function About() {
   const [modalOpen, setModalOpen] = useState(false);
   const [currentImg, setCurrentImg] = useState(null);
 
-  // Images array for easy mapping
+  const openModal = (img) => {
+    setCurrentImg(img);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setCurrentImg(null);
+  };
+
   const images = [
     { src: "/home-section.jpeg", alt: "Event 1" },
     { src: "/slide2.jpeg", alt: "Event 2" },
@@ -40,16 +49,14 @@ function About() {
     { src: "/event4.jpeg", alt: "Event 6" },
   ];
 
-  // Open modal and show clicked image
-  const openModal = (img) => {
-    setCurrentImg(img);
-    setModalOpen(true);
-  };
+  // Show/hide state for team details
+  const [showDetails, setShowDetails] = useState({
+    obby: false,
+    pacifique: false,
+  });
 
-  // Close modal
-  const closeModal = () => {
-    setModalOpen(false);
-    setCurrentImg(null);
+  const toggleDetails = (member) => {
+    setShowDetails(prev => ({ ...prev, [member]: !prev[member] }));
   };
 
   return (
@@ -100,21 +107,39 @@ function About() {
         </div>
       )}
 
-      {/* Meet the Team */}
+      {/* Management Team Section */}
       <section className="about-team" data-aos="fade-up">
         <h2>Meet Our Management Team</h2>
         <div className="team-members">
+          {/* Gakuru Obby */}
           <div className="member-card" data-aos="flip-left">
             <img src="/about-founder.jpeg" alt="Gakuru Obby" />
             <h3>Gakuru Obby</h3>
             <p>Founder & Creative Director</p>
+            <button className="detail-btn" onClick={() => toggleDetails('obby')}>
+              {showDetails.obby ? 'Hide Details' : 'Show Details'}
+            </button>
+            {showDetails.obby && (
+              <div className="member-details">
+                <p>Gakuru Obby is the visionary behind Indatwa Events, known for his eye for elegance and dedication to excellence. With years of hands-on experience in the events industry, he ensures every detail is perfectly orchestrated.</p>
+              </div>
+            )}
           </div>
+
+          {/* Pacifique */}
           <div className="member-card" data-aos="flip-left" data-aos-delay="150">
-            <img src="/about_it.png" alt="Team member 2" />
+            <img src="/about_it.png" alt="Pacifique IRAKOZE R" />
             <h3>Pacifique IRAKOZE R</h3>
             <p>IT Manager & Operations Lead</p>
+            <button className="detail-btn" onClick={() => toggleDetails('pacifique')}>
+              {showDetails.pacifique ? 'Hide Details' : 'Show Details'}
+            </button>
+            {showDetails.pacifique && (
+              <div className="member-details">
+                <p>Pacifique is the backbone of our technical and operational success. He manages IT systems and ensures that every event runs smoothly with the latest technology and precision logistics.</p>
+              </div>
+            )}
           </div>
-          
         </div>
       </section>
     </div>

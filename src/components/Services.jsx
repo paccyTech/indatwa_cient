@@ -31,8 +31,16 @@ function Service() {
       title: 'Event Coordination',
       image: '/event-cord.jpg',
       shortDesc: 'Professionalism and etiquette at the highest level.',
-      details: 'Our team specializes in high-level protocol services including VIP reception, dignitary etiquette, seating arrangements, and formal ceremonial standards.',
+      details: 'At Indatwa Events, we believe that flawless coordination is the foundation of every successful event. Our dedicated team of professionals ensures that every detail  from the initial planning to the final execution  is handled with precision, creativity, and care..',
     },
+    {
+      title: 'Sound Systems',
+      image: '/indatwa-sounds.jpeg',
+      shortDesc: 'Crystal-clear audio delivery.',
+      details: 'Our sound system services ensure high-quality audio for all types of events — from weddings and graduations to corporate functions and concerts. We provide professional-grade speakers, microphones, mixers, and technical support to make sure your event sounds as amazing as it looks.'
+    }
+    
+    
   ];
 
   return (
