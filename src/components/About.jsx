@@ -112,7 +112,7 @@ function About() {
           <div className="member-card" data-aos="flip-left" data-aos-delay="150">
             <img src="/about_it.png" alt="Team member 2" />
             <h3>Pacifique IRAKOZE R</h3>
-            <p>IT Manager</p>
+            <p>IT Manager & Operation Lead</p>
           </div>
           
         </div>
