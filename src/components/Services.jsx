@@ -70,6 +70,15 @@ function Service() {
           </div>
         ))}
       </section>
+
+      {/* Support Section */}
+      <section className="support-section" data-aos="fade-up" data-aos-delay="300">
+        <h2>Need Support?</h2>
+        <p>If you have any questions or need assistance, we're here to help.</p>
+        <a href="/support" className="support-button" role="button">
+          Contact Support
+        </a>
+      </section>
     </div>
   );
 }

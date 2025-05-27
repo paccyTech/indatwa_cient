@@ -39,6 +39,7 @@ function Home() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,6 +54,9 @@ function Home() {
     window.addEventListener('touchstart', handleUserInteraction, { once: true });
     return () => window.removeEventListener('touchstart', handleUserInteraction);
   }, []);
+
+  const openImage = (image) => setSelectedImage(image);
+  const closeImage = () => setSelectedImage(null);
 
   return (
     <div>
@@ -124,6 +128,7 @@ function Home() {
               className="testimonial-item landscape"
               key={index}
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              onClick={() => openImage(item.image)}
             >
               <img src={item.image} alt={`Client ${index + 1}`} />
               <p>{item.caption}</p>
@@ -131,6 +136,13 @@ function Home() {
           ))}
         </div>
       </section>
+
+      {/* Modal for Fullscreen Image */}
+      {selectedImage && (
+        <div className="image-modal" onClick={closeImage}>
+          <img src={selectedImage} alt="Full View" />
+        </div>
+      )}
 
       {/* Call to Action */}
       <section className="cta-section">

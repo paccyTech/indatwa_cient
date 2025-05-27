@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import '../styles/About.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 function About() {
+  // Initialize AOS animations
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
+
   // Slider settings
   const settings = {
     dots: true,
@@ -28,10 +35,9 @@ function About() {
   const images = [
     { src: "/home-section.jpeg", alt: "Event 1" },
     { src: "/slide2.jpeg", alt: "Event 2" },
-    { src: "/home-section.jpeg", alt: "Event 3" },
-    { src: "/home-section.jpeg", alt: "Event 4" },
-    { src: "/home-section.jpeg", alt: "Event 5" },
-    { src: "/home-section.jpeg", alt: "Event 6" },
+    { src: "/event1.jpeg", alt: "Event 3" },
+    { src: "/event2.jpeg", alt: "Event 4" },
+    { src: "/event4.jpeg", alt: "Event 6" },
   ];
 
   // Open modal and show clicked image
@@ -49,7 +55,7 @@ function About() {
   return (
     <div className="about-page">
       {/* Hero Section */}
-      <section className="about-hero">
+      <section className="about-hero" data-aos="fade-down">
         <div className="about-overlay">
           <h1>About <span className="highlight">Indatwa Events</span></h1>
           <p>Where elegance meets excellence</p>
@@ -57,7 +63,7 @@ function About() {
       </section>
 
       {/* Story Section */}
-      <section className="about-story">
+      <section className="about-story" data-aos="fade-up">
         <div className="content-box">
           <h2>Our Story</h2>
           <p>
@@ -68,7 +74,7 @@ function About() {
       </section>
 
       {/* Visual Gallery Slider */}
-      <section className="about-gallery">
+      <section className="about-gallery" data-aos="zoom-in">
         <h2>Meet the wide team</h2>
         <Slider {...settings}>
           {images.map((img, idx) => (
@@ -95,20 +101,20 @@ function About() {
       )}
 
       {/* Meet the Team */}
-      <section className="about-team">
+      <section className="about-team" data-aos="fade-up">
         <h2>Meet Our Management Team</h2>
         <div className="team-members">
-          <div className="member-card">
+          <div className="member-card" data-aos="flip-left">
             <img src="/about-founder.jpeg" alt="Gakuru Obby" />
             <h3>Gakuru Obby</h3>
             <p>Founder & Creative Director</p>
           </div>
-          <div className="member-card">
+          <div className="member-card" data-aos="flip-left" data-aos-delay="150">
             <img src="/team.jpeg" alt="Team member 2" />
             <h3>xxxxxx</h3>
             <p>Lead Planner</p>
           </div>
-          <div className="member-card">
+          <div className="member-card" data-aos="flip-left" data-aos-delay="300">
             <img src="/team.jpeg" alt="Team member 3" />
             <h3>xxxxxxxx</h3>
             <p>Protocol Coordinator</p>

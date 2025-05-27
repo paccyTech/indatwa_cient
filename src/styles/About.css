@@ -193,6 +193,13 @@
   }
 }
 
+/* Change hero image on phones (max-width 480px) */
+@media (max-width: 480px) {
+  .about-hero {
+    background: url('/about-hero-mobile.jpeg') no-repeat center center/cover;
+  }
+}
+
 .about-gallery img {
   width: 100%;
   height: 250px;       /* Fixed height to keep slider uniform */
