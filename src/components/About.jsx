@@ -110,9 +110,9 @@ function About() {
             <p>Founder & Creative Director</p>
           </div>
           <div className="member-card" data-aos="flip-left" data-aos-delay="150">
-            <img src="/team.jpeg" alt="Team member 2" />
-            <h3>xxxxxx</h3>
-            <p>Lead Planner</p>
+            <img src="/about_it.png" alt="Team member 2" />
+            <h3>Pacifique IRAKOZE R</h3>
+            <p>IT Manager</p>
           </div>
           <div className="member-card" data-aos="flip-left" data-aos-delay="300">
             <img src="/team.jpeg" alt="Team member 3" />
