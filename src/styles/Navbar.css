@@ -25,7 +25,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative; /* ensures absolute inside works */
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -67,7 +67,6 @@
   transition: color 0.3s ease, background-color 0.3s ease;
   padding: 0.3rem 0.5rem;
   border-radius: 4px;
-  /* For accessibility */
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -87,7 +86,7 @@
   font-size: 1.8rem;
   cursor: pointer;
   z-index: 1100;
-  padding: 0.5rem 0.8rem; /* Increased tap area */
+  padding: 0.5rem 0.8rem;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
@@ -110,7 +109,9 @@
     right: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(249, 250, 251, 0.98); /* Slightly more opaque */
+    background-color: rgba(255, 255, 255, 0.75); /* White transparent overlay */
+    backdrop-filter: blur(10px); /* Optional: smooth glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
     flex-direction: column;
     max-height: 0;
     overflow: hidden;
@@ -121,27 +122,27 @@
     transition:
       max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
       padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    /* For better animation, consider JS to toggle height:auto */
   }
 
+
   .nav-links.open {
-    max-height: 100vh; /* Increased max-height to accommodate more links */
+    max-height: 100vh;
     padding: 1rem 1rem 1.5rem;
   }
 
   .nav-links li {
-    width: 100%;
+    width: 80%;
   }
 
   .nav-links a {
     display: block;
     width: 100%;
-    padding: 1rem 0; /* Increased padding for finger-friendly taps */
-    font-size: 1rem; /* Better readability on mobile */
+    padding: 1rem 0;
+    font-size: 1rem;
   }
 }
 
-/* Tablet View (Intermediate) */
+/* Tablet View */
 @media (max-width: 1024px) {
   .nav-links {
     gap: 1rem;
@@ -159,16 +160,16 @@
   }
 
   .logo {
-    font-size: 1.05rem; /* Slightly increased from 1rem for better legibility */
+    font-size: 1.05rem;
   }
 
   .nav-links a {
-    padding: 0.75rem 0; /* Slightly more padding for tap targets */
-    font-size: 1rem; /* Increased font size for accessibility */
+    padding: 0.75rem 0;
+    font-size: 1rem;
   }
 
   .menu-toggle {
-    font-size: 1.7rem; /* Slightly bigger for easier tap */
+    font-size: 1.7rem;
     padding: 0.6rem 0.9rem;
   }
 }
@@ -207,7 +208,7 @@
 
 /* Individual Colors */
 .sidebar-btn.call {
-  background-color: #2563eb; /* Blue */
+  background-color: #2563eb;
 }
 
 .sidebar-btn.whatsapp {
@@ -223,7 +224,7 @@
   display: flex;
   align-items: center;
   font-weight: 600;
-  color: white; /* adjust to your theme */
+  color: white;
   background-color: aliceblue;
   padding: 6px 12px;
   border-radius: 4px;
@@ -231,11 +232,10 @@
 }
 
 .support-btn:hover {
-  background-color: darkblue; /* darker accent on hover */
+  background-color: darkblue;
   color: white;
 }
 
 .support-btn svg {
   vertical-align: middle;
-  /* margin-right is set inline for better control */
 }
