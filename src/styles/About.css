@@ -183,6 +183,14 @@
   .gallery-grid img {
     height: 150px;
   }
+
+  /* Fix about team images cropping on mobile */
+  .member-card img {
+    height: auto;               /* Maintain aspect ratio */
+    max-height: 450px;          /* Keep max height consistent */
+    object-fit: cover;
+    object-position: top center; /* Crop from top so heads are visible */
+  }
 }
 
 .about-gallery img {

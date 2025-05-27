@@ -10,6 +10,7 @@ import Login from './components/Login';
 import ScrollToTop from './components/ScrollToTop';
 import Dashboard from './components/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute'; // ✅ Import ProtectedRoute
+import Support from './components/Support'; // ✅ Import Support component
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/support" element={<Support />} /> {/* ✅ Add Support route */}
 
           {/* ✅ Protect the dashboard route */}
           <Route
