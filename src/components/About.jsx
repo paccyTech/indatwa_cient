@@ -114,11 +114,7 @@ function About() {
             <h3>Pacifique IRAKOZE R</h3>
             <p>IT Manager</p>
           </div>
-          <div className="member-card" data-aos="flip-left" data-aos-delay="300">
-            <img src="/team.jpeg" alt="Team member 3" />
-            <h3>xxxxxxxx</h3>
-            <p>Protocol Coordinator</p>
-          </div>
+          
         </div>
       </section>
     </div>
