@@ -19,6 +19,7 @@ import Reports from './components/Report';
 import ContactClients from './components/ContactClients';
 import Setting from './components/Setting';
 import ProtectedRoute from './components/ProtectedRoute';
+import Logout from './components/Logout';
 
 import './App.css';
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/login" element={<Login />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/logout" element={<Logout />} />
 
           {/* Protected Routes */}
           <Route
