@@ -15,7 +15,7 @@ import Dashboard from './components/Dashboard';
 import Support from './components/Support';
 import Bookings from './components/Bookings';
 import ManageUsers from './components/ManageUsers';
-import Reports from './components/reports';
+import Reports from './components/Report';
 import ContactClients from './components/ContactClients';
 import Settings from './components/settings';
 

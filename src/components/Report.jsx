@@ -7,7 +7,7 @@ import {
 import '../styles/Dashboard.css';
 import '../styles/Reports.css';
 
-const Reports = () => {
+const Report = () => {
   const [user, setUser] = useState(null);
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -163,4 +163,4 @@ const Reports = () => {
   );
 };
 
-export default Reports;
+export default Report;
