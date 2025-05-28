@@ -21,7 +21,9 @@ const Login = () => {
       localStorage.setItem('user', JSON.stringify(user));
 
       toast.success('Login successful!');
-      window.location.href = '/dashboard';
+      setTimeout(() => {
+        window.location.href = '/dashboard';
+      }, 1500); // Give time for toast to show
     } catch (err) {
       const errorMsg = err.response?.data?.message || 'Login failed. Check credentials.';
       toast.error(errorMsg);

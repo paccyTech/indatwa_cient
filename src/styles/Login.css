@@ -4,6 +4,8 @@
   height: 100vh;
   width: 100vw;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Prevent horizontal scroll on small screens */
+  overflow-x: hidden;
 }
 
 /* Left side: image with dark blue overlay */
@@ -15,6 +17,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  min-height: 300px; /* min height so image shows nicely on small */
 }
 
 .login-left .overlay {
@@ -49,21 +52,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 4rem 3rem;
+  padding: 3rem 3rem;
+  /* Remove fixed height so it wraps content */
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  min-height: 300px; /* so it doesn't collapse too much */
+  /* Allow scrolling if content grows taller */
+  overflow-y: auto;
 }
 
 /* Actual login form */
 .login-form {
   width: 100%;
-  max-width: 1200px; /* increased form size */
+  max-width: 480px; /* smaller max-width for better readability */
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  padding: 3rem 4rem;
+  padding: 2.5rem 3rem;
+  box-sizing: border-box;
+  height: 70%;
 }
 
 .login-form h2 {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   text-align: center;
   font-weight: 700;
   color: #102a72;
@@ -79,12 +88,13 @@
 
 .login-form input {
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.3rem;
   padding: 1rem 1.2rem;
   border: 1.5px solid #bbb;
   border-radius: 8px;
   font-size: 1.1rem;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .login-form input:focus {
@@ -125,28 +135,39 @@
   color: red;
 }
 
-/* Responsive tweak: stack vertically on smaller screens */
+/* Responsive tweaks: stack vertically on smaller screens */
 @media (max-width: 768px) {
   .login-container {
     flex-direction: column;
+    height: auto; /* allow container to grow with content */
+    min-height: 100vh; /* at least full viewport height */
   }
   .login-left,
   .login-right {
     flex: none;
     width: 100%;
-    height: 50vh;
+    height: auto; /* height adapts to content */
+    min-height: 250px;
     box-shadow: none;
+  }
+  .login-left {
+    order: 1; /* image first on mobile */
+  }
+  .login-right {
+    order: 2; /* form below image */
+    padding: 2rem 1.5rem;
   }
   .login-left .overlay {
     font-size: 1.5rem;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
   }
   .login-form {
     max-width: 100%;
-    padding: 2rem 2.5rem;
+    padding: 2rem 1.5rem;
   }
   .login-form button {
     font-size: 1.1rem;
     padding: 0.9rem;
   }
 }
+

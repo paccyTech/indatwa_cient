@@ -31,7 +31,7 @@ const Dashboard = () => {
           <>
             <Link to="/manage-users">🔐 Manage Users</Link>
             <Link to="/reports">📊 All Reports</Link>
-            <Link to="/settings">⚙️ System Settings</Link>
+            <Link to="/setting">⚙️ System Settings</Link>
           </>
         )}
 

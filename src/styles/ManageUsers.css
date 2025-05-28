@@ -125,11 +125,11 @@
   }
   
   button:last-child {
-    background-color: #e64949;
+    background-color: darkblue;
   }
   
   button:last-child:hover {
-    background-color: #ff7070;
+    background-color: darkblue;
   }
   
   /* Responsive tweaks */

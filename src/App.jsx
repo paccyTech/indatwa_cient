@@ -18,6 +18,7 @@ import ManageUsers from './components/ManageUsers';
 import Reports from './components/Report';
 import ContactClients from './components/ContactClients';
 import Setting from './components/Setting';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import './App.css';
 
@@ -35,12 +36,56 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/login" element={<Login />} />
           <Route path="/support" element={<Support />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/bookings" element={<Bookings />} />
-          <Route path="/manage-users" element={<ManageUsers />} />
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/contact-clients" element={<ContactClients />} />
-          <Route path="/setting" element={<Setting />} />
+
+          {/* Protected Routes */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute allowedRoles={['admin', 'superadmin']}>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/bookings"
+            element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <Bookings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/manage-users"
+            element={
+              <ProtectedRoute allowedRoles={['superadmin']}>
+                <ManageUsers />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/reports"
+            element={
+              <ProtectedRoute allowedRoles={['superadmin']}>
+                <Reports />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/contact-clients"
+            element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ContactClients />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/setting"
+            element={
+              <ProtectedRoute allowedRoles={['superadmin']}>
+                <Setting />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
 
         <Footer />
