@@ -13,7 +13,7 @@ import Login from './components/Login';
 import ScrollToTop from './components/ScrollToTop';
 import Dashboard from './components/Dashboard';
 import Support from './components/Support';
-import Bookings from './components/bookings';
+import Bookings from './components/Bookings';
 import ManageUsers from './components/ManageUsers';
 import Reports from './components/reports';
 import ContactClients from './components/ContactClients';
