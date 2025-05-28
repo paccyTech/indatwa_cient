@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Dashboard.css';
 
-const Settings = () => {
+const Setting = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
@@ -67,4 +67,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default Setting;

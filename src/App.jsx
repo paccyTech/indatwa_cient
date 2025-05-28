@@ -17,7 +17,7 @@ import Bookings from './components/Bookings';
 import ManageUsers from './components/ManageUsers';
 import Reports from './components/Report';
 import ContactClients from './components/ContactClients';
-import Settings from './components/settings';
+import Setting from './components/Setting';
 
 import './App.css';
 
@@ -40,7 +40,7 @@ function App() {
           <Route path="/manage-users" element={<ManageUsers />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/contact-clients" element={<ContactClients />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/setting" element={<Setting />} />
         </Routes>
 
         <Footer />
