@@ -1,0 +1,185 @@
+/* Base styles (keep yours mostly intact) */
+
+/* Make user form width fluid but capped */
+.user-form {
+    max-width: 320px;
+    width: 90%;
+    margin: 0 auto 1.2rem;
+    background-color: #0e1a2b; /* Darker navy for more depth */
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(98, 135, 255, 0.3);
+    color: #e4eaff; /* Softer white */
+    height: auto;
+  }
+  
+  .user-form h2 {
+    margin-bottom: 0.7rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #9bbcff; /* Light blue for titles */
+  }
+  
+  .user-form input,
+  .user-form select,
+  .user-form button {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 0.7rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .user-form input,
+  .user-form select {
+    background-color: #1c2e4a;
+    color: #f0f4ff;
+  }
+  
+  .user-form input:focus,
+  .user-form select:focus {
+    background-color: #2e4a7c;
+    outline: none;
+    color: #ffffff;
+  }
+  
+  .user-form button {
+    background-color: #3f6be0;
+    color: white;
+    font-weight: 700;
+  }
+  
+  .user-form button:hover {
+    background-color: #5d86ff;
+  }
+  
+  /* Error message */
+  .error {
+    color: #ff5c5c;
+    margin: 1rem 0;
+    font-weight: 600;
+  }
+  
+  /* Loading text */
+  .loading {
+    color: #9bbcff;
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+  
+  /* Table container */
+  .table-wrapper {
+    overflow-x: auto;
+    margin-top: 1rem;
+  }
+  
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #f0f4ff;
+    box-shadow: 0 0 10px rgba(98, 135, 255, 0.4);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #1c2e4a;
+    min-width: 600px;
+  }
+  
+  thead {
+    background-color: #111c2e;
+    color: #ffffff;
+  }
+  
+  th, td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #304f7f;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+  
+  tbody tr:hover {
+    background-color: #2f4e7c;
+    cursor: pointer;
+  }
+  
+  /* Action buttons */
+  button {
+    margin-right: 0.5rem;
+    padding: 0.3rem 0.6rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #3f6be0;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #5d86ff;
+  }
+  
+  button:last-child {
+    background-color: #e64949;
+  }
+  
+  button:last-child:hover {
+    background-color: #ff7070;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 1024px) {
+    .user-form input,
+    .user-form select,
+    .user-form button,
+    th, td {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .user-form {
+      max-width: 100%;
+      padding: 0.8rem;
+    }
+  
+    th, td {
+      padding: 0.6rem 0.5rem;
+    }
+  
+    .table-wrapper {
+      margin-top: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .user-form {
+      padding: 0.6rem;
+    }
+  
+    .user-form h2 {
+      font-size: 1rem;
+    }
+  
+    .user-form input,
+    .user-form select,
+    .user-form button {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.5rem;
+    }
+  
+    table {
+      font-size: 0.75rem;
+      min-width: 480px;
+    }
+  
+    th, td {
+      padding: 0.4rem 0.3rem;
+    }
+  }
+  

@@ -1,0 +1,160 @@
+.bookings-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookings-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #001f3f; /* dark blue */
+  font-size: 2rem;
+  font-weight: 700;
+  width: 100%;
+}
+
+.bookings-loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #333333; /* dark gray/black */
+  width: 100%;
+}
+
+/* Table styling */
+.bookings-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  margin-top: 1.5rem;
+}
+
+.bookings-table th,
+.bookings-table td {
+  padding: 1rem;
+  text-align: center; /* center text in table */
+  vertical-align: middle;
+}
+
+.bookings-table th {
+  background-color: #001f3f; /* dark blue */
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.bookings-table td {
+  background-color: #f9f9f9;
+  font-size: 0.95rem;
+  color: #000000; /* black */
+  border-top: 1px solid #e0e0e0;
+}
+
+.bookings-table tr:hover td {
+  background-color: #e6f0ff; /* light blue highlight */
+  transition: 0.3s ease;
+}
+
+.bookings-table tr:nth-child(even) td {
+  background-color: #f1f1f1;
+}
+
+/* Export buttons container */
+.export-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Mobile Card View */
+.bookings-mobile {
+  display: none;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Card styles for mobile */
+.booking-card {
+  background: #ffffff;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.booking-card p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #000000;
+}
+
+.booking-card strong {
+  color: #001f3f; /* dark blue */
+}
+
+/* Delete button */
+.delete-button {
+  background-color: #001f3f; /* dark blue */
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  min-width: 80px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #003366; /* slightly lighter dark blue */
+}
+
+/* Export buttons */
+.export-button {
+  background-color: rgb(0, 81, 0); /* dark green */
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 120px;
+}
+
+.export-button:hover {
+  background-color: green;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bookings-table {
+    display: none;
+  }
+
+  .bookings-mobile {
+    display: block;
+  }
+}
+.dashboard-content {
+  font-size: 1.8rem;
+  color: #001f3f; /* dark blue */
+  margin-bottom: 1rem;
+  text-align: center; /* centers text */
+  width: 100%;
+}

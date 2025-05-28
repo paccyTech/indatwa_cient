@@ -1,0 +1,78 @@
+
+  
+  .chart-section {
+    background: #1c3470; /* darkish blue */
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(74, 111, 207, 0.5); /* blue glow */
+  }
+  
+  .chart-section h2 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: white; /* lighter blue */
+  }
+  
+  /* Table styles */
+  .table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(74, 111, 207, 0.5);
+    background: #1c3470;
+    padding: 1rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #f0f4ff;
+  }
+  
+  thead {
+    background-color: #4a6fcf; /* medium blue */
+    color: white;
+  }
+  
+  th, td {
+    padding: 0.7rem 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #3a4d90; /* subtle blue border */
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  
+  tbody tr:hover {
+    background-color: #2e4489; /* hover darker blue */
+  }
+  
+  /* Loading and error states */
+  .loading, .error {
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #a8bbff;
+    text-align: center;
+  }
+  
+  /* Responsive */
+  
+  @media (max-width: 1024px) {
+    
+    
+    th, td {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .chart-section {
+      padding: 1rem;
+    }
+  
+   
+    th, td {
+      padding: 0.4rem 0.3rem;
+    }
+  }
+  

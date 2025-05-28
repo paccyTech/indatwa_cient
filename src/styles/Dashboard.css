@@ -1,138 +1,118 @@
+
+
+/* Fullscreen Dashboard Layout */
 .dashboard-container {
-    background-color: #0a1d44;
-    color: white;
-    min-height: 100vh;
-    padding: 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background-color: #001f4d; /* Dark blue */
+  color: white;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #ffffff40;
+  padding-bottom: 12px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.sidebar a:hover {
+  background-color: #003366;
+  transform: translateX(5px);
+}
+
+/* Main dashboard area */
+.dashboard {
+  flex: 1;
+  padding: 40px;
+  background-color: #ffffff;
+  color: #000000;
+  overflow-y: auto;
+}
+
+.dashboard h1 {
+  font-size: 2.6rem;
+  color: #001f4d;
+  margin-bottom: 10px;
+}
+
+.dashboard p {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 40px;
+}
+
+/* Section headers */
+.superadmin-section h2,
+.admin-section h2 {
+  font-size: 2rem;
+  color: #ff4081;
+  margin-bottom: 20px;
+}
+
+/* Section lists */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+}
+
+/* Loading */
+.loading {
+  font-size: 1.8rem;
+  color: #888;
+  text-align: center;
+  margin-top: 100px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
   }
-  
-  .dashboard-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: #ffffff;
-  }
-  
-  .dashboard-loading,
-  .dashboard-empty {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #cccccc;
-  }
-  
-  .dashboard-table-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-radius: 8px;
-  }
-  
-  .dashboard-table {
+
+  .sidebar {
     width: 100%;
-    min-width: 600px; /* prevent collapse on mobile */
-    border-collapse: collapse;
-    background-color: #112b5e;
-    border-radius: 8px;
-    overflow: hidden;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 16px;
   }
-  
-  .dashboard-table thead {
-    background-color: #173a75;
+
+  .sidebar h2 {
+    display: none;
   }
-  
-  .dashboard-table th,
-  .dashboard-table td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid #2e4d8a;
+
+  .sidebar a {
+    padding: 10px;
+    font-size: 1rem;
   }
-  
-  .dashboard-table tbody tr:hover {
-    background-color: #1f3d7a;
-    transition: background-color 0.3s ease;
+
+  .dashboard {
+    padding: 25px;
   }
-  
-  .dashboard-table th {
-    color: #ffffff;
-  }
-  
-  .dashboard-table td {
-    color: #e0e0e0;
-  }
-  
-  /* Pagination styles */
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-    color: white;
-  }
-  
-  .pagination button {
-    padding: 0.6rem 1.2rem;
-    background-color: #173a75;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .pagination button:hover:not(:disabled) {
-    background-color: #1f4aa3;
-  }
-  
-  .pagination button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  /* ===== MOBILE RESPONSIVENESS ===== */
-  @media screen and (max-width: 768px) {
-    .dashboard-container {
-      padding: 1rem;
-    }
-  
-    .dashboard-title {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-  
-    .dashboard-table th,
-    .dashboard-table td {
-      padding: 0.75rem;
-      font-size: 0.9rem;
-    }
-  
-    .pagination {
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-  
-    .pagination button {
-      width: 100%;
-      font-size: 1rem;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .dashboard-title {
-      font-size: 1.3rem;
-    }
-  
-    .dashboard-table {
-      min-width: 100%;
-    }
-  
-    .dashboard-table th,
-    .dashboard-table td {
-      padding: 0.6rem;
-      font-size: 0.85rem;
-    }
-  }
-  
+}

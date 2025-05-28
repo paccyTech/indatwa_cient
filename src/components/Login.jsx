@@ -1,65 +1,69 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 import '../styles/Login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [credentials, setCredentials] = useState({ username: '', password: '' });
 
-  const hardcodedEmail = 'indatwa@gmail.com';
-  const hardcodedPassword = 'indatwa123';
+  const handleChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
 
-  useEffect(() => {
-    // ✅ If already logged in, redirect to dashboard
-    const isAuthenticated = localStorage.getItem('authenticated') === 'true';
-    if (isAuthenticated) {
-      navigate('/dashboard');
-    }
-  }, [navigate]);
-
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (email === hardcodedEmail && password === hardcodedPassword) {
-      localStorage.setItem('authenticated', 'true'); // ✅ Save login state
-      setError('');
-      navigate('/dashboard');
-    } else {
-      setError('Invalid credentials. Please try again.');
+    try {
+      const res = await axios.post('http://localhost:5000/api/login', credentials);
+      const { token, user } = res.data;
+
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+
+      toast.success('Login successful!');
+      window.location.href = '/dashboard';
+    } catch (err) {
+      const errorMsg = err.response?.data?.message || 'Login failed. Check credentials.';
+      toast.error(errorMsg);
     }
   };
 
   return (
     <div className="login-container">
-      <form onSubmit={handleLogin} className="login-form">
-        <h2 className="login-title">Login</h2>
+      <div className="login-left">
+        <div className="overlay">
+          <h1>Welcome Back!</h1>
+          <p>Enter your credentials to access your dashboard</p>
+        </div>
+      </div>
 
-        {error && <p className="login-error">{error}</p>}
+      <div className="login-right">
+        <form className="login-form" onSubmit={handleLogin}>
+          <h2>Login</h2>
 
-        <div className="form-group">
-          <label>Email</label>
+          <label htmlFor="username">Username</label>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            id="username"
+            type="text"
+            name="username"
+            value={credentials.username}
+            onChange={handleChange}
             required
           />
-        </div>
 
-        <div className="form-group">
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <input
+            id="password"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={credentials.password}
+            onChange={handleChange}
             required
           />
-        </div>
 
-        <button type="submit" className="login-button">Log In</button>
-      </form>
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 };
