@@ -42,7 +42,7 @@ const ManageUsers = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('http://localhost:5000/api/users');
+      const res = await fetch('https://indatwa-server.onrender.com/api/users');
       if (!res.ok) throw new Error('Failed to fetch users');
       const data = await res.json();
       setUsers(data);
@@ -66,7 +66,7 @@ const ManageUsers = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/users', {
+      const res = await fetch('https://indatwa-server.onrender.com/api/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -88,7 +88,7 @@ const ManageUsers = () => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     setError(null);
     try {
-      const res = await fetch(`http://localhost:5000/api/users/${id}`, {
+      const res = await fetch(`https://indatwa-server.onrender.com/api/users/${id}`, {
         method: 'DELETE',
       });
       if (!res.ok) {
@@ -154,6 +154,7 @@ const ManageUsers = () => {
           <>
             <Link to="/manage-users">🔐 Manage Users</Link>
             <Link to="/reports">📊 All Reports</Link>
+            <Link to="/bookings">📋 View Bookings</Link>
             <Link to="/settings">⚙️ System Settings</Link>
           </>
         )}
