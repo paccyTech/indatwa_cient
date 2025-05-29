@@ -27,7 +27,7 @@ const ContactClients = () => {
 
   useEffect(() => {
     if (user) {
-      fetch('http://localhost:5000/api/bookings')
+      fetch('https://indatwa-server.onrender.com/api/bookings')
         .then(res => res.json())
         .then(data => {
           setClients(data);

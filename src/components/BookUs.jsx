@@ -26,7 +26,7 @@ const BookUs = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/bookings', formData);
+      const res = await axios.post('https://indatwa-server.onrender.com/api/bookings', formData);
       toast.success(res.data.message || 'Booking successful!');
       setFormData({
         name: '', email: '', phone: '', service: '', eventType: '',

@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:5000/api/login', credentials);
+      const res = await axios.post('https://indatwa-server.onrender.com/api/login', credentials);
       const { token, user } = res.data;
 
       localStorage.setItem('token', token);

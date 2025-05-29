@@ -52,7 +52,7 @@ const Bookings = () => {
     if (!window.confirm('Are you sure you want to delete this booking?')) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/api/bookings/${id}`, {
+      const response = await fetch(`https://indatwa-server.onrender.com/api/bookings/${id}`, {
         method: 'DELETE'
       });
 

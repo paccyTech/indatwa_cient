@@ -123,7 +123,7 @@ const ManageUsers = () => {
     }
     setError(null);
     try {
-      const res = await fetch(`http://localhost:5000/api/users/${id}`, {
+      const res = await fetch(`https://indatwa-server.onrender.com/api/users/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(editForm),
