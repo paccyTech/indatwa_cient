@@ -114,8 +114,8 @@ function About() {
           {/* Gakuru Obby */}
           <div className="member-card" data-aos="flip-left">
             <img src="/about-founder.jpeg" alt="Gakuru Obby" />
-            <h3>Gakuru Obby</h3>
-            <p>Founder & Creative Director</p>
+            <h3>GAKURU Obby</h3>
+            <p>Founder & CEO</p>
             <button className="detail-btn" onClick={() => toggleDetails('obby')}>
               {showDetails.obby ? 'Hide Details' : 'Show Details'}
             </button>
@@ -125,6 +125,20 @@ function About() {
               </div>
             )}
           </div>
+          <div className="member-card" data-aos="flip-left">
+            <img src="/nelly.jpeg" alt="Gakuru Obby" />
+            <h3>USANASE Nelly</h3>
+            <p>Managing Director-Gisenyi</p>
+            <button className="detail-btn" onClick={() => toggleDetails('obby')}>
+              {showDetails.obby ? 'Hide Details' : 'Show Details'}
+            </button>
+            {showDetails.obby && (
+              <div className="member-details">
+                <p>USANASE Nelly, Managing Director for Gisenyi at Indatwa Events, combines elegance and excellence with years of industry experience. She ensures every event in the region is flawlessly executed and uniquely memorable.</p>
+              </div>
+            )}
+          </div>
+
 
           {/* Pacifique */}
           <div className="member-card" data-aos="flip-left" data-aos-delay="150">
