@@ -125,6 +125,7 @@ function About() {
               </div>
             )}
           </div>
+          
           <div className="member-card" data-aos="flip-left">
             <img src="/nelly.jpeg" alt="Gakuru Obby" />
             <h3>USANASE Nelly</h3>
