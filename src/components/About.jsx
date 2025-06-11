@@ -125,12 +125,12 @@ function About() {
               </div>
             )}
           </div>
-          
+
           <div className="member-card" data-aos="flip-left">
-            <img src="/nelly.jpeg" alt="Gakuru Obby" />
+            <img src="/nelly.jpeg" alt="Usanase Nelly" />
             <h3>USANASE Nelly</h3>
             <p>Managing Director-Gisenyi</p>
-            <button className="detail-btn" onClick={() => toggleDetails('obby')}>
+            <button className="detail-btn" onClick={() => toggleDetails('nelly')}>
               {showDetails.obby ? 'Hide Details' : 'Show Details'}
             </button>
             {showDetails.obby && (
