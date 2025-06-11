@@ -53,6 +53,7 @@ function About() {
   const [showDetails, setShowDetails] = useState({
     obby: false,
     pacifique: false,
+    nelly: false,
   });
 
   const toggleDetails = (member) => {
