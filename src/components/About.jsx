@@ -131,9 +131,9 @@ function About() {
             <h3>USANASE Nelly</h3>
             <p>Managing Director-Gisenyi</p>
             <button className="detail-btn" onClick={() => toggleDetails('nelly')}>
-              {showDetails.obby ? 'Hide Details' : 'Show Details'}
+              {showDetails.nelly ? 'Hide Details' : 'Show Details'}
             </button>
-            {showDetails.obby && (
+            {showDetails.nelly && (
               <div className="member-details">
                 <p>USANASE Nelly, Managing Director for Gisenyi at Indatwa Events, combines elegance and excellence with years of industry experience. She ensures every event in the region is flawlessly executed and uniquely memorable.</p>
               </div>
