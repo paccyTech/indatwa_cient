@@ -33,9 +33,9 @@ function Home() {
   };
 
   const clientImages = [
-    { image: '/clients/client1.jpg', caption: 'After our elegant wedding.' },
+    { image: '/clients/client1.jpg', caption: 'Kelly & Junior wedding.' },
     { image: '/clients/client1.jpg', caption: 'Corporate event success!' },
-    { image: '/clients/client1.jpg', caption: 'Perfect setup at the gala.' },
+    { image: '/clients/client1.jpg', caption: 'We make sure our clients enjoy their event.' },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
