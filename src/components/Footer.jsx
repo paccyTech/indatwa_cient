@@ -46,9 +46,7 @@ function Footer() {
         <p>
           &copy; {new Date().getFullYear()} Indatwa Events. All rights reserved.
         </p>
-        <p className="powered-by">
-          Designed by <a href="https://www.ragateck.com" target="_blank" rel="noopener noreferrer">RAGA TECH GROUP</a>
-        </p>
+        
 
         {/* Hidden Admin Button */}
         <div className="admin-access">

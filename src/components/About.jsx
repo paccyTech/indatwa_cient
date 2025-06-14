@@ -130,7 +130,7 @@ function About() {
           <div className="member-card" data-aos="flip-left">
             <img src="/nelly.jpeg" alt="Usanase Nelly" />
             <h3>USANASE Nelly</h3>
-            <p>Managing Director-Gisenyi</p>
+            <p>CO-CEO</p>
             <button className="detail-btn" onClick={() => toggleDetails('nelly')}>
               {showDetails.nelly ? 'Hide Details' : 'Show Details'}
             </button>
