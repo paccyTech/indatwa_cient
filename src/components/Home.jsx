@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import '../styles/Home.css';
 import { Link } from 'react-router-dom';
 
@@ -33,9 +34,9 @@ function Home() {
   };
 
   const clientImages = [
-    { image: '/clients/client1.jpg', caption: 'Kelly & Junior wedding.' },
-    { image: '/clients/client1.jpg', caption: 'Corporate event success!' },
-    { image: '/clients/client1.jpg', caption: 'We make sure our clients enjoy their event.' },
+    { image: '/clients/client1.jpg', caption: 'Kelly & Junior wedding.', alt: 'Kelly and Junior at their wedding event' },
+    { image: '/clients/client2.jpg', caption: 'Corporate event success!', alt: 'Corporate event setup with happy clients' },
+    { image: '/clients/client3.jpg', caption: 'We make sure our clients enjoy their event.', alt: 'Clients enjoying their event with smiles' },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,11 +56,33 @@ function Home() {
     return () => window.removeEventListener('touchstart', handleUserInteraction);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && selectedImage) {
+        closeImage();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage]);
+
   const openImage = (image) => setSelectedImage(image);
   const closeImage = () => setSelectedImage(null);
 
   return (
-    <div>
+    <>
+      <Helmet>
+        <title>Indatwa Events - Crafting Unforgettable Events</title>
+        <meta name="description" content="Indatwa Events Protocol specializes in weddings, corporate galas, and cultural events with elegance and precision." />
+        <meta name="keywords" content="events, weddings, corporate events, event planning, Rwanda, Indatwa Events" />
+        <meta name="author" content="Indatwa Events" />
+        <meta property="og:title" content="Indatwa Events - Crafting Unforgettable Events" />
+        <meta property="og:description" content="We specialize in organizing high-end weddings and corporate galas with elegance and precision." />
+        <meta property="og:url" content="https://www.indatwaevents.com/" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       <div className="home-container">
         <video
           ref={videoRef}
@@ -81,11 +104,11 @@ function Home() {
           </Link>
         </div>
 
-        <button className="scroll-down" onClick={handleScroll}>
+        <button className="scroll-down" onClick={handleScroll} aria-label="Scroll to About section">
           ↓
         </button>
 
-        <button className="audio-toggle-button" onClick={toggleAudio}>
+        <button className="audio-toggle-button" onClick={toggleAudio} aria-pressed={!isMuted}>
           {isMuted ? '🔈 Unmute' : '🔇 Mute'}
         </button>
       </div>
@@ -120,7 +143,7 @@ function Home() {
       </section>
 
       {/* Client Picture Slider Section */}
-      <section className="testimonial-section">
+      <section className="testimonial-section" aria-label="Client moments slider">
         <h2>Moments With Our Clients</h2>
         <div className="testimonial-slider">
           {clientImages.map((item, index) => (
@@ -129,8 +152,16 @@ function Home() {
               key={index}
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               onClick={() => openImage(item.image)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  openImage(item.image);
+                }
+              }}
+              aria-label={`Open image: ${item.caption}`}
             >
-              <img src={item.image} alt={`Client ${index + 1}`} />
+              <img src={item.image} alt={item.alt || `Client ${index + 1}`} />
               <p>{item.caption}</p>
             </div>
           ))}
@@ -139,8 +170,15 @@ function Home() {
 
       {/* Modal for Fullscreen Image */}
       {selectedImage && (
-        <div className="image-modal" onClick={closeImage}>
-          <img src={selectedImage} alt="Full View" />
+        <div
+          className="image-modal"
+          onClick={closeImage}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Full screen client image"
+          tabIndex={-1}
+        >
+          <img src={selectedImage} alt="Full view of client event" />
         </div>
       )}
 
@@ -151,7 +189,7 @@ function Home() {
           Explore More
         </Link>
       </section>
-    </div>
+    </>
   );
 }
 
