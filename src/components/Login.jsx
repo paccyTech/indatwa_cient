@@ -15,15 +15,15 @@ const Login = () => {
 
     try {
       const res = await axios.post('https://indatwa-server.onrender.com/api/login', credentials);
-      const { token, user } = res.data;
+      const { user } = res.data;
 
-      localStorage.setItem('token', token);
+      // Save user info in local storage
       localStorage.setItem('user', JSON.stringify(user));
 
       toast.success('Login successful!');
       setTimeout(() => {
-        window.location.href = '/dashboard';
-      }, 1500); // Give time for toast to show
+        window.location.href = '/dashboard'; // Redirect to dashboard
+      }, 1500);
     } catch (err) {
       const errorMsg = err.response?.data?.message || 'Login failed. Check credentials.';
       toast.error(errorMsg);
