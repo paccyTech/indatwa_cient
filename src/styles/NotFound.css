@@ -1,63 +1,142 @@
 .notfound-container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #121212;
-    color: #eee;
-    padding: 20px;
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .notfound-content {
-    max-width: 400px;
-  }
-  
-  .notfound-title {
-    font-size: 8rem;
-    font-weight: 900;
-    margin: 0;
-    color: #ff2e63;
-    text-shadow: 0 0 10px #ff2e63aa;
-  }
-  
-  .notfound-message {
-    font-size: 1.8rem;
-    margin: 20px 0 10px;
-    letter-spacing: 1.5px;
-  }
-  
-  .notfound-submessage {
-    font-size: 1rem;
-    color: #bbb;
-    margin-bottom: 30px;
-    line-height: 1.4;
-  }
-  
-  .notfound-btn {
-    background-color: #ff2e63;
-    border: none;
-    color: #121212;
-    padding: 12px 30px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .notfound-btn:hover {
-    background-color: #e02455;
-    color: #fff;
-  }
-  
-  @media (max-width: 480px) {
-    .notfound-title {
-      font-size: 5rem;
-    }
-    .notfound-message {
-      font-size: 1.4rem;
-    }
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #121212;
+  color: #eee;
+  flex-direction: column;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.notfound-content {
+  max-width: 500px;
+}
+
+.notfound-title {
+  font-size: 8rem;
+  font-weight: 900;
+  margin: 0;
+  color: #fe3c72;
+}
+
+.notfound-message {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.notfound-submessage {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #bbb;
+}
+
+.notfound-btn {
+  background-color: #fe3c72;
+  border: none;
+  padding: 0.7rem 2rem;
+  margin: 0.5rem 0.5rem 1.5rem 0.5rem;
+  color: white;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.notfound-btn:hover {
+  background-color: #d02758;
+}
+
+/* Game container */
+
+.game-container {
+  position: relative;
+  background-color: #222;
+  margin: 1rem auto;
+  border: 3px solid #fe3c72;
+  border-radius: 6px;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Dino styling */
+.dino {
+  position: absolute;
+  left: 40px;
+  width: 40px;
+  height: 40px;
+  background: url('https://i.ibb.co/kS6gRRB/dino-run.png') no-repeat center center / contain;
+  cursor: pointer;
+  bottom: 0;
+  transition: bottom 0.1s ease;
+}
+
+.dino.game-over {
+  filter: grayscale(1);
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Obstacle styling */
+.obstacle {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 40px;
+  background-color: #fe3c72;
+  border-radius: 3px;
+}
+
+/* Score */
+.score {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  color: #fe3c72;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px #fe3c72;
+}
+
+/* Game Over text and restart button */
+.game-over-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fe3c72;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px #d02758;
+}
+
+.restart-btn {
+  display: block;
+  margin: 1rem auto 0 auto;
+  background-color: #d02758;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  color: white;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.restart-btn:hover {
+  background-color: #fe3c72;
+}
+
+/* Game toggle button styling */
+.game-toggle {
+  background-color: #444;
+  color: #fe3c72;
+  border: 2px solid #fe3c72;
+}
+
+.game-toggle:hover {
+  background-color: #fe3c72;
+  color: #222;
+}
