@@ -18,33 +18,39 @@ function Service() {
     {
       title: 'Event Services',
       image: '/service.jpg',
+      alt: 'Elegant event setup with decoration',
       shortDesc: 'Flawless event execution with elegance.',
-      details: 'We handle weddings, graduations, birthdays, corporate events and more. We take care of decoration, planning, coordination, and execution, making your dream event a reality.',
+      details:
+        'We handle weddings, graduations, birthdays, corporate events and more. We take care of decoration, planning, coordination, and execution, making your dream event a reality.',
     },
     {
       title: 'Protocol Management',
       image: '/protocol.jpg',
+      alt: 'Protocol team guiding guests',
       shortDesc: 'Professionalism and etiquette at the highest level.',
-      details: 'Our team specializes in high-level protocol services including VIP reception, dignitary etiquette, seating arrangements, and formal ceremonial standards.',
+      details:
+        'Our team specializes in high-level protocol services including VIP reception, dignitary etiquette, seating arrangements, and formal ceremonial standards.',
     },
     {
       title: 'Event Coordination',
       image: '/event-cord.jpg',
-      shortDesc: 'Professionalism and etiquette at the highest level.',
-      details: 'At Indatwa Events, we believe that flawless coordination is the foundation of every successful event. Our dedicated team of professionals ensures that every detail  from the initial planning to the final execution  is handled with precision, creativity, and care..',
+      alt: 'Coordinator planning with clients',
+      shortDesc: 'Precision event planning from start to finish.',
+      details:
+        'At Indatwa Events, we believe that flawless coordination is the foundation of every successful event. Our dedicated team of professionals ensures that every detail — from the initial planning to the final execution — is handled with precision, creativity, and care.',
     },
     {
       title: 'Sound Systems',
       image: '/indatwa-sounds.jpeg',
+      alt: 'Professional speakers and audio equipment at an event',
       shortDesc: 'Crystal-clear audio delivery.',
-      details: 'Our sound system services ensure high-quality audio for all types of events — from weddings and graduations to corporate functions and concerts. We provide professional-grade speakers, microphones, mixers, and technical support to make sure your event sounds as amazing as it looks.'
-    }
-    
-    
+      details:
+        'Our sound system services ensure high-quality audio for all types of events — from weddings and graduations to corporate functions and concerts. We provide professional-grade speakers, microphones, mixers, and technical support to make sure your event sounds as amazing as it looks.',
+    },
   ];
 
   return (
-    <div className="service-page">
+    <main className="service-page">
       {/* Hero Section */}
       <section className="service-hero">
         <div className="service-overlay">
@@ -57,37 +63,50 @@ function Service() {
 
       {/* Services Section */}
       <section className="service-section">
+        <h2 className="visually-hidden">Our Services</h2>
         {serviceDetails.map((service, index) => (
-          <div
+          <article
             className="service-card"
             key={index}
             data-aos="zoom-in"
             data-aos-delay={index * 200}
           >
-            <img src={service.image} alt={service.title} />
-            <h2>{service.title}</h2>
+            <img src={service.image} alt={service.alt} loading="lazy" />
+            <h3>{service.title}</h3>
             <p>{service.shortDesc}</p>
-            <button onClick={() => toggleAccordion(index)}>
+            <button
+              onClick={() => toggleAccordion(index)}
+              aria-expanded={openIndex === index}
+              aria-controls={`service-details-${index}`}
+            >
               {openIndex === index ? 'Hide Details' : 'Show Details'}
             </button>
             {openIndex === index && (
-              <div className="accordion-content" data-aos="fade-in">
+              <div
+                className="accordion-content"
+                id={`service-details-${index}`}
+                data-aos="fade-in"
+              >
                 <p>{service.details}</p>
               </div>
             )}
-          </div>
+          </article>
         ))}
       </section>
 
       {/* Support Section */}
-      <section className="support-section" data-aos="fade-up" data-aos-delay="300">
+      <section
+        className="support-section"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
         <h2>Need Support?</h2>
         <p>If you have any questions or need assistance, we're here to help.</p>
-        <a href="/support" className="support-button" role="button">
+        <a href="/contact" className="support-button" role="button">
           Contact Support
         </a>
       </section>
-    </div>
+    </main>
   );
 }
 
