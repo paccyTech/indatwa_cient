@@ -1,142 +1,122 @@
+/* Container */
 .notfound-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  background-color: #121212;
-  color: #eee;
-  flex-direction: column;
-  padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #0b1d51;
+  padding: 3rem 2rem;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
+  gap: 1.5rem;
+  user-select: none;
+  letter-spacing: 0.03em;
 }
 
+/* Content Box */
 .notfound-content {
-  max-width: 500px;
+  max-width: 480px;
+  width: 100%;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgb(11 29 81 / 0.12);
+  background-color: #f9fbff;
+  transition: box-shadow 0.3s ease;
 }
 
+.notfound-content:hover {
+  box-shadow: 0 20px 45px rgb(11 29 81 / 0.2);
+}
+
+/* Title */
 .notfound-title {
-  font-size: 8rem;
+  font-size: clamp(4rem, 10vw, 9rem);
   font-weight: 900;
   margin: 0;
-  color: #fe3c72;
+  line-height: 1;
+  color: #0b1d51;
+  text-shadow: 2px 2px 6px rgba(11, 29, 81, 0.15);
 }
 
+/* Primary message */
 .notfound-message {
-  font-size: 2rem;
-  margin: 0.5rem 0;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-top: -1rem;
+  margin-bottom: 0.5rem;
+  color: #192f7c;
+  letter-spacing: 0.05em;
 }
 
+/* Secondary message */
 .notfound-submessage {
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: #4052d6;
   margin-bottom: 2rem;
-  color: #bbb;
+  line-height: 1.4;
+  font-weight: 500;
+  padding: 0 0.5rem;
 }
 
+/* Button */
 .notfound-btn {
-  background-color: #fe3c72;
+  background: linear-gradient(135deg, #0b1d51 0%, #4052d6 100%);
   border: none;
-  padding: 0.7rem 2rem;
-  margin: 0.5rem 0.5rem 1.5rem 0.5rem;
+  padding: 0.9rem 2.5rem;
   color: white;
-  font-size: 1.1rem;
-  border-radius: 4px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 6px 14px rgba(64, 82, 214, 0.6);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  user-select: none;
+  letter-spacing: 0.04em;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .notfound-btn:hover {
-  background-color: #d02758;
+  background: linear-gradient(135deg, #4052d6 0%, #0b1d51 100%);
+  box-shadow: 0 10px 25px rgba(11, 29, 81, 0.8);
+  transform: translateY(-3px);
 }
 
-/* Game container */
+/* Responsive improvements */
 
-.game-container {
-  position: relative;
-  background-color: #222;
-  margin: 1rem auto;
-  border: 3px solid #fe3c72;
-  border-radius: 6px;
-  overflow: hidden;
-  user-select: none;
+/* Small devices (phones) */
+@media (max-width: 400px) {
+  .notfound-container {
+    padding: 2rem 1rem;
+  }
+
+  .notfound-content {
+    padding: 1.5rem 1.8rem;
+    margin: 0 0.5rem;
+  }
+
+  .notfound-submessage {
+    margin-bottom: 1.5rem;
+  }
+
+  .notfound-btn {
+    max-width: 100%;
+    padding: 0.75rem 1.5rem;
+  }
 }
 
-/* Dino styling */
-.dino {
-  position: absolute;
-  left: 40px;
-  width: 40px;
-  height: 40px;
-  background: url('https://i.ibb.co/kS6gRRB/dino-run.png') no-repeat center center / contain;
-  cursor: pointer;
-  bottom: 0;
-  transition: bottom 0.1s ease;
-}
+/* Medium devices (tablets) */
+@media (min-width: 401px) and (max-width: 768px) {
+  .notfound-content {
+    max-width: 90%;
+    padding: 1.8rem 2rem;
+  }
 
-.dino.game-over {
-  filter: grayscale(1);
-  opacity: 0.6;
-  cursor: default;
-}
-
-/* Obstacle styling */
-.obstacle {
-  position: absolute;
-  bottom: 0;
-  width: 20px;
-  height: 40px;
-  background-color: #fe3c72;
-  border-radius: 3px;
-}
-
-/* Score */
-.score {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  color: #fe3c72;
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-shadow: 0 0 8px #fe3c72;
-}
-
-/* Game Over text and restart button */
-.game-over-text {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fe3c72;
-  font-size: 2rem;
-  font-weight: 700;
-  text-shadow: 0 0 10px #d02758;
-}
-
-.restart-btn {
-  display: block;
-  margin: 1rem auto 0 auto;
-  background-color: #d02758;
-  border: none;
-  padding: 0.6rem 1.5rem;
-  color: white;
-  border-radius: 4px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.restart-btn:hover {
-  background-color: #fe3c72;
-}
-
-/* Game toggle button styling */
-.game-toggle {
-  background-color: #444;
-  color: #fe3c72;
-  border: 2px solid #fe3c72;
-}
-
-.game-toggle:hover {
-  background-color: #fe3c72;
-  color: #222;
+  .notfound-btn {
+    max-width: 280px;
+    padding: 0.85rem 2rem;
+  }
 }
