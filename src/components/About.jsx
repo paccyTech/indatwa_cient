@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import Slider from 'react-slick';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -7,12 +8,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 function About() {
-  // Initialize AOS animations
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  // Slider settings
   const settings = {
     dots: true,
     infinite: true,
@@ -27,7 +26,6 @@ function About() {
     ]
   };
 
-  // Modal state
   const [modalOpen, setModalOpen] = useState(false);
   const [currentImg, setCurrentImg] = useState(null);
 
@@ -49,7 +47,6 @@ function About() {
     { src: "/event4.jpeg", alt: "Event 6" },
   ];
 
-  // Show/hide state for team details
   const [showDetails, setShowDetails] = useState({
     obby: false,
     pacifique: false,
@@ -62,6 +59,27 @@ function About() {
 
   return (
     <div className="about-page">
+      {/* SEO Helmet Meta Tags */}
+      <Helmet>
+        <title>About Indatwa Events | Elegance Meets Excellence</title>
+        <meta name="description" content="Learn the inspiring story of Indatwa Events and meet the passionate team behind our unforgettable experiences." />
+        <meta name="keywords" content="Indatwa Events, About Indatwa, Events Rwanda, Event Team, Obby Gakuru, Usanase Nelly, Pacifique Irakoze, Event Planning" />
+        <link rel="canonical" href="https://indatwaevents.com/about" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="About Indatwa Events | Elegance Meets Excellence" />
+        <meta property="og:description" content="Meet the team and discover the story behind Indatwa Events." />
+        <meta property="og:image" content="https://yourdomain.com/home-section.jpeg" />
+        <meta property="og:url" content="https://indatwaevents.com/about" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Indatwa Events" />
+        <meta name="twitter:description" content="Discover how Indatwa Events brings elegance and excellence to your special moments." />
+        <meta name="twitter:image" content="https://indatwaevents.com/home-section.jpeg" />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="about-hero" data-aos="fade-down">
         <div className="about-overlay">
@@ -127,6 +145,7 @@ function About() {
             )}
           </div>
 
+          {/* Usanase Nelly */}
           <div className="member-card" data-aos="flip-left">
             <img src="/nelly.jpeg" alt="Usanase Nelly" />
             <h3>USANASE Nelly</h3>
@@ -140,7 +159,6 @@ function About() {
               </div>
             )}
           </div>
-
 
           {/* Pacifique */}
           <div className="member-card" data-aos="flip-left" data-aos-delay="150">
