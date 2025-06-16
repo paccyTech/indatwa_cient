@@ -20,6 +20,7 @@ import ContactClients from './components/ContactClients';
 import Setting from './components/Setting';
 import ProtectedRoute from './components/ProtectedRoute';
 import Logout from './components/Logout';
+import NotFound from './components/NotFound';  // <-- Import NotFound here
 
 import './App.css';
 
@@ -88,6 +89,9 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          {/* 404 Not Found - Catch All Route */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
         <Footer />
