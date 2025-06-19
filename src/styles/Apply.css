@@ -1,165 +1,92 @@
-.support-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    min-height: 100vh;
-    text-align: center;
-    color: white;
-    overflow: hidden;
-    z-index: 0;
-  }
-  
-  /* Background image with gradient overlay */
-  .support-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(10, 10, 10, 0.7)),
-      url('/support.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
-    transition: background-image 0.3s ease-in-out;
-  }
-  
-  /* Mobile image override */
-  @media (max-width: 600px) {
-    .support-container::before {
-      background-image: 
-        linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(10, 10, 10, 0.7)),
-        url('/support-mobile.jpeg');
-    }
-  }
-  
-  /* Heading */
-  .support-container h2 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: #fff;
-    z-index: 1;
-    letter-spacing: 1px;
-  }
-  
-  /* Button group */
-  .support-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    z-index: 1;
-  }
-  
-  /* Base button style */
-  .support-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 28px;
-    font-size: 18px;
-    font-weight: 600;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    min-width: 180px;
-    text-decoration: none;
-    color: white;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, background-color 0.3s ease;
-  }
-  
-  .support-btn:hover {
-    transform: translateY(-3px);
-  }
-  
-  /* Button Variants */
-  .support-btn.call {
-    background-color: #0056ff;
-  }
-  
-  .support-btn.call:hover {
-    background-color: #0040cc;
-  }
-  
-  .support-btn.whatsapp {
-    background-color: #25D366;
-  }
-  
-  .support-btn.whatsapp:hover {
-    background-color: #1ebe57;
-  }
-  
-  .support-btn.instagram {
-    background-color: #e1306c;
-  }
-  
-  .support-btn.instagram:hover {
-    background-color: #b92d5d;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 600px) {
-    .support-container h2 {
-      font-size: 26px;
-    }
-  
-    .support-btn {
-      font-size: 16px;
-      padding: 14px 20px;
-      min-width: 160px;
-    }
-  }
-  
-  /* Support Section below main hero */
-  .support-section {
-    background-color: #01012b;
-    color: white;
-    padding: 3rem 1rem;
-    text-align: center;
-    margin-top: 4rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  }
-  
-  .support-section h2 {
-    margin-bottom: 1rem;
-    font-size: 2.25rem;
-    font-weight: 700;
-  }
-  
-  .support-section p {
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
-    color: #dddddd;
-    line-height: 1.6;
-  }
-  
-  /* CTA Button */
-  .support-button {
-    background-color: #ff0044;
-    color: #fff;
-    padding: 0.9rem 2.2rem;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    box-shadow: 0 5px 15px rgba(255, 0, 68, 0.3);
-  }
-  
-  .support-button:hover {
-    background-color: #cc0033;
-    transform: scale(1.05);
-  }
-  
-  
+.apply-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 2rem 2.5rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+.apply-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.apply-form label {
+  margin: 12px 0 6px;
+  font-weight: 600;
+  color: #001f4d;
+}
+
+.apply-form input,
+.apply-form textarea {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.apply-form input:focus,
+.apply-form textarea:focus {
+  border-color: #001f4d;
+  box-shadow: 0 0 5px rgba(0, 31, 77, 0.3);
+}
+
+.apply-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.apply-form button {
+  background-color: #001f4d;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.apply-form button:hover {
+  background-color: #003399;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.file-preview {
+  margin-top: -8px;
+  color: #444;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* Modern file input (optional style) */
+input[type="file"] {
+  border: 1px dashed #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+  background-color: #f0f0f0;
+}
