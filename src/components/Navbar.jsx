@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaPhoneAlt, FaWhatsapp, FaLinkedinIn, FaHeadset } from 'react-icons/fa';
 import '../styles/Navbar.css';
+import { FaUserTie } from 'react-icons/fa'; 
+
 
 const Navbar = () => {
   const location = useLocation();
@@ -67,13 +69,13 @@ const Navbar = () => {
             {/* Support Button with icon */}
             <li>
               <Link
-                to="/support"
-                className={isActive('/support') + ' support-btn'}
+                to="/apply"
+                className={isActive('/apply') + ' support-btn'}
                 onClick={handleLinkClick}
                 aria-label="Support"
               >
-                <FaHeadset style={{ marginRight: '6px' }} />
-                Support
+                <FaUserTie style={{ marginRight: '6px' }} />
+                Apply For Ushers
               </Link>
             </li>
           </ul>

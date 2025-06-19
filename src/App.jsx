@@ -12,7 +12,7 @@ import Services from './components/Services';
 import Login from './components/Login';
 import ScrollToTop from './components/ScrollToTop';
 import Dashboard from './components/Dashboard';
-import Support from './components/Support';
+import Apply from './components/Apply';
 import Bookings from './components/Bookings';
 import ManageUsers from './components/ManageUsers';
 import Reports from './components/Report';
@@ -37,7 +37,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/support" element={<Support />} />
+          <Route path="/apply" element={<Apply />} />
           <Route path="/logout" element={<Logout />} />
 
           {/* Protected Routes */}
