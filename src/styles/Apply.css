@@ -90,3 +90,25 @@ input[type="file"] {
 input[type="file"]:hover {
   background-color: #f0f0f0;
 }
+
+.closed-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+.closed-content {
+  max-width: 400px;
+}
+
+.closed-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}

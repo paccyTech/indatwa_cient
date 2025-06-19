@@ -1,5 +1,5 @@
 // src/pages/Apply.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/Apply.css';
 
 const MAX_FILE_SIZE_MB = 5;
@@ -15,21 +15,16 @@ const Apply = () => {
 
   const [error, setError] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const [isApplicationOpen, setIsApplicationOpen] = useState(true);
   const [fileName, setFileName] = useState('');
 
-  useEffect(() => {
-    const status = localStorage.getItem('isApplicationOpen');
-    if (status !== null) {
-      setIsApplicationOpen(status === 'true');
-    }
-  }, []);
+  // 🔒 Application is manually closed
+  const isApplicationOpen = false;
 
   const validateEmail = (email) =>
     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const validatePhone = (phone) =>
-    /^[0-9+\-()\s]{7,15}$/.test(phone); // Accepts +2507..., numbers, dashes
+    /^[0-9+\-()\s]{7,15}$/.test(phone);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -46,12 +41,12 @@ const Apply = () => {
 
       if (!file) return;
 
+      const fileSizeInMB = file.size / (1024 * 1024);
       if (!allowedTypes.includes(file.type)) {
         setError('Only PDF, DOC, DOCX, JPG, or PNG files are allowed.');
         return;
       }
 
-      const fileSizeInMB = file.size / (1024 * 1024);
       if (fileSizeInMB > MAX_FILE_SIZE_MB) {
         setError('File size must be under 5MB.');
         return;
@@ -69,7 +64,6 @@ const Apply = () => {
     e.preventDefault();
     const { name, phone, email, motivation, documents } = formData;
 
-    // Validation
     if (!name || !phone || !email || !motivation || !documents) {
       setError('Please fill in all fields and upload your document.');
       return;
@@ -85,13 +79,10 @@ const Apply = () => {
       return;
     }
 
-    // Simulate backend upload
     console.log('Submitted:', formData);
-
     setSubmitted(true);
     setError('');
 
-    // Reset form
     setFormData({
       name: '',
       phone: '',
@@ -102,10 +93,15 @@ const Apply = () => {
     setFileName('');
   };
 
+  // 🔒 Show this if application is closed
   if (!isApplicationOpen) {
     return (
-      <div className="apply-container">
-        <h2 style={{ textAlign: 'center' }}>🚫 Applications are currently closed</h2>
+      <div className="apply-container closed-message">
+        <div className="closed-content">
+          <span className="closed-icon">🚫</span>
+          <h2>Application is Closed</h2>
+          <p>Please check back later. Applications will reopen soon.</p>
+        </div>
       </div>
     );
   }
