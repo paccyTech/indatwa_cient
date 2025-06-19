@@ -77,6 +77,7 @@ const Report = () => {
         {user.role === 'superadmin' && (
           <>
             <Link to="/manage-users">🔐 Manage Users</Link>
+            <Link to="/bookings">📋 View Bookings</Link>
             <Link to="/reports">📊 All Reports</Link>
             <Link to="/settings">⚙️ System Settings</Link>
           </>

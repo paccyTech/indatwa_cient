@@ -57,6 +57,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+           <Route
+            path="/bookings"
+            element={
+              <ProtectedRoute allowedRoles={['superadmin']}>
+                <Bookings />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path="/manage-users"
             element={

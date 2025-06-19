@@ -1,73 +1,76 @@
-
-
 /* Fullscreen Dashboard Layout */
 .dashboard-container {
   display: flex;
   height: 100vh;
   width: 100vw;
-  background-color: #fff;
+  background-color: #f9f9f9;
   overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 /* Sidebar */
 .sidebar {
-  width: 240px;
-  background-color: #001f4d; /* Dark blue */
-  color: white;
-  padding: 30px 20px;
+  width: 260px;
+  background-color: #001f4d;
+  color: #fff;
+  padding: 32px 24px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar h2 {
   font-size: 1.8rem;
-  margin-bottom: 30px;
-  border-bottom: 2px solid #ffffff40;
+  margin-bottom: 32px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   padding-bottom: 12px;
 }
 
 .sidebar a {
   text-decoration: none;
-  color: white;
+  color: #fff;
   font-size: 1.1rem;
-  padding: 12px 14px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  padding: 12px 18px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  display: block;
 }
 
-.sidebar a:hover {
+.sidebar a:hover,
+.sidebar a:focus {
   background-color: #003366;
-  transform: translateX(5px);
+  transform: translateX(6px);
 }
 
 /* Main dashboard area */
 .dashboard {
   flex: 1;
-  padding: 40px;
+  padding: 48px;
   background-color: #ffffff;
-  color: #000000;
+  color: #111;
   overflow-y: auto;
 }
 
 .dashboard h1 {
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   color: #001f4d;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .dashboard p {
   font-size: 1.2rem;
-  color: #444;
+  color: #555;
   margin-bottom: 40px;
+  max-width: 720px;
 }
 
 /* Section headers */
 .superadmin-section h2,
 .admin-section h2 {
-  font-size: 2rem;
-  color: white;
+  font-size: 1.8rem;
+  color: #001f4d;
   margin-bottom: 20px;
 }
 
@@ -78,16 +81,17 @@ ul {
 }
 
 ul li {
-  margin-bottom: 16px;
-  font-size: 1.2rem;
+  margin-bottom: 14px;
+  font-size: 1.1rem;
+  color: #333;
 }
 
 /* Loading */
 .loading {
   font-size: 1.8rem;
-  color: #888;
+  color: #777;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 120px;
 }
 
 /* Responsive */
@@ -99,8 +103,11 @@ ul li {
   .sidebar {
     width: 100%;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
     padding: 16px;
+    overflow-x: auto;
+    gap: 0;
   }
 
   .sidebar h2 {
@@ -108,11 +115,13 @@ ul li {
   }
 
   .sidebar a {
-    padding: 10px;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 10px 12px;
+    white-space: nowrap;
+    border-radius: 6px;
   }
 
   .dashboard {
-    padding: 25px;
+    padding: 28px 20px;
   }
 }
