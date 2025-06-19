@@ -82,7 +82,7 @@ form {
   padding: 4rem 3rem;
   display: flex;
   flex-direction: column;
-  /* Remove justify-content:center to align top */
+  justify-content: center;
   max-width: 600px;
   width: 100%;
   box-shadow: -5px 0 10px rgba(0, 0, 0, 0.05);
@@ -142,7 +142,7 @@ form button {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: auto; /* Push button to bottom if space */
+ 
   animation: fadeInUp 1s ease forwards;
   animation-delay: 0.5s;
 }
@@ -227,4 +227,47 @@ form button:hover {
     font-size: 1rem;
     padding: 0.9rem;
   }
+}
+.form-navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.nav-btn {
+  background-color: darkblue;
+  color: #ccc;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background-color: #bbb;
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 0.9rem 1.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
 }

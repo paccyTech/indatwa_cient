@@ -40,11 +40,12 @@ function About() {
   };
 
   const images = [
-    { src: "/home-section.jpeg", alt: "Event 1" },
-    { src: "/slide2.jpeg", alt: "Event 2" },
-    { src: "/event1.jpeg", alt: "Event 3" },
-    { src: "/event2.jpeg", alt: "Event 4" },
-    { src: "/event4.jpeg", alt: "Event 6" },
+  
+    { src: "/team10.jpg", alt: "Event 2" },
+    { src: "/team11.jpg", alt: "Event 3" },
+    { src: "/team10.jpg", alt: "Event 2 (Duplicate)" } 
+   
+   
   ];
 
   const [showDetails, setShowDetails] = useState({
@@ -69,7 +70,7 @@ function About() {
         {/* Open Graph / Facebook */}
         <meta property="og:title" content="About Indatwa Events | Elegance Meets Excellence" />
         <meta property="og:description" content="Meet the team and discover the story behind Indatwa Events." />
-        <meta property="og:image" content="https://yourdomain.com/home-section.jpeg" />
+        <meta property="og:image" content="https://indatwaevents.com/home-section.jpeg" />
         <meta property="og:url" content="https://indatwaevents.com/about" />
         <meta property="og:type" content="website" />
 

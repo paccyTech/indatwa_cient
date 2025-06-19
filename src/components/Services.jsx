@@ -16,6 +16,7 @@ function Service() {
 
   const serviceDetails = [
     {
+      id: 'event-services',
       title: 'Event Services',
       image: '/service.jpg',
       alt: 'Elegant event setup with decoration',
@@ -24,6 +25,7 @@ function Service() {
         'We handle weddings, graduations, birthdays, corporate events and more. We take care of decoration, planning, coordination, and execution, making your dream event a reality.',
     },
     {
+      id: 'protocol-management',
       title: 'Protocol Management',
       image: '/protocol.jpg',
       alt: 'Protocol team guiding guests',
@@ -32,20 +34,22 @@ function Service() {
         'Our team specializes in high-level protocol services including VIP reception, dignitary etiquette, seating arrangements, and formal ceremonial standards.',
     },
     {
+      id: 'event-coordination',
       title: 'Event Coordination',
       image: '/event-cord.jpg',
       alt: 'Coordinator planning with clients',
       shortDesc: 'Precision event planning from start to finish.',
       details:
-        'At Indatwa Events, we believe that flawless coordination is the foundation of every successful event. Our dedicated team of professionals ensures that every detail — from the initial planning to the final execution — is handled with precision, creativity, and care.',
+        'Flawless coordination is the foundation of every successful event. We handle every detail from the initial planning to the final execution with precision and care.',
     },
     {
+      id: 'sound-systems',
       title: 'Sound Systems',
       image: '/indatwa-sounds.jpeg',
       alt: 'Professional speakers and audio equipment at an event',
       shortDesc: 'Crystal-clear audio delivery.',
       details:
-        'Our sound system services ensure high-quality audio for all types of events — from weddings and graduations to corporate functions and concerts. We provide professional-grade speakers, microphones, mixers, and technical support to make sure your event sounds as amazing as it looks.',
+        'We provide high-quality sound systems for all types of events with professional-grade speakers, microphones, mixers, and technical support.',
     },
   ];
 
@@ -67,7 +71,7 @@ function Service() {
         {serviceDetails.map((service, index) => (
           <article
             className="service-card"
-            key={index}
+            key={service.id}
             data-aos="zoom-in"
             data-aos-delay={index * 200}
           >
@@ -75,11 +79,14 @@ function Service() {
             <h3>{service.title}</h3>
             <p>{service.shortDesc}</p>
             <button
-              onClick={() => toggleAccordion(index)}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleAccordion(index);
+              }}
               aria-expanded={openIndex === index}
               aria-controls={`service-details-${index}`}
             >
-              {openIndex === index ? 'Hide Details' : 'Show Details'}
+              {openIndex === index ? 'Hide Details ▲' : 'Show Details ▼'}
             </button>
             {openIndex === index && (
               <div

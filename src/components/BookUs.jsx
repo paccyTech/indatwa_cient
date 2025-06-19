@@ -4,179 +4,117 @@ import '../styles/BookUs.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const BookUs = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    eventType: '',
-    date: '',
-    time: '',
-    location: '',
-    guests: '',
-    duration: '',
-    notes: ''
-  });
+const questions = [
+  { label: 'Full Name', name: 'name', type: 'text', placeholder: 'e.g., Indatwa Events' },
+  { label: 'Email Address', name: 'email', type: 'email', placeholder: 'e.g., indatwaexample@gmail.com' },
+  { label: 'Phone Number', name: 'phone', type: 'tel', placeholder: 'e.g., +250 123 456 789' },
+  { label: 'Service Type', name: 'service', type: 'select', options: ['Protocol Management', 'Guest Handling', 'Event Planning', 'Sound Systems', 'Other'] },
+  { label: 'Event Type', name: 'eventType', type: 'select', options: ['Wedding', 'Corporate', 'Birthday', 'Concert', 'Conference', 'Other'] },
+  { label: 'Event Date', name: 'date', type: 'date' },
+  { label: 'Event Time', name: 'time', type: 'time' },
+  { label: 'Event Location', name: 'location', type: 'text', placeholder: 'e.g., Kigali Convention Centre' },
+  { label: 'Number of Guests', name: 'guests', type: 'select', options: ['Less than 50', '50 - 100', '100 - 300', '300+'] },
+  { label: 'Duration', name: 'duration', type: 'select', options: ['1 hour', '2 hours', 'Half Day', 'Full Day'] },
+  { label: 'Special Requests / Notes', name: 'notes', type: 'textarea', placeholder: 'Any additional instructions or details?' }
+];
 
-  const handleChange = e => {
+const BookUs = () => {
+  const [formData, setFormData] = useState({});
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  const handleNext = () => {
+    if (!formData[questions[currentStep].name]) {
+      toast.warn('Please fill out this field.');
+      return;
+    }
+    setCurrentStep((prev) => prev + 1);
+  };
+
+  const handlePrevious = () => {
+    if (currentStep > 0) {
+      setCurrentStep((prev) => prev - 1);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post('https://indatwa-server.onrender.com/api/bookings', formData);
       toast.success(res.data.message || 'Booking successful!');
-      setFormData({
-        name: '', email: '', phone: '', service: '', eventType: '',
-        date: '', time: '', location: '', guests: '',
-        duration: '', notes: ''
-      });
+      setFormData({});
+      setCurrentStep(0);
     } catch (err) {
       const errorMsg = err.response?.data?.message || 'Booking failed. Please try again.';
       toast.error(errorMsg);
     }
   };
 
+  const currentField = questions[currentStep];
+
   return (
     <div className="booking-form">
       <ToastContainer position="top-center" autoClose={3000} />
-      
-      {/* Left Side: Image */}
       <div className="booking-image" />
-
-      {/* Right Side: Form */}
       <form onSubmit={handleSubmit}>
         <h2>Book Indatwa Events Services</h2>
 
-        <label>Full Name</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="e.g., Indatwa Events"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+        <label>{currentField.label}</label>
+        {currentField.type === 'select' ? (
+          <select
+            name={currentField.name}
+            value={formData[currentField.name] || ''}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select</option>
+            {currentField.options.map((option, idx) => (
+              <option key={idx} value={option}>{option}</option>
+            ))}
+          </select>
+        ) : currentField.type === 'textarea' ? (
+          <textarea
+            name={currentField.name}
+            value={formData[currentField.name] || ''}
+            placeholder={currentField.placeholder || ''}
+            onChange={handleChange}
+            rows={4}
+            required
+          />
+        ) : (
+          <input
+            type={currentField.type}
+            name={currentField.name}
+            value={formData[currentField.name] || ''}
+            placeholder={currentField.placeholder || ''}
+            onChange={handleChange}
+            required
+          />
+        )}
 
-        <label>Email Address</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="e.g., indatwaexample@gmail.com"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+        <div className="form-navigation-buttons">
+          <button
+            type="button"
+            onClick={handlePrevious}
+            disabled={currentStep === 0}
+            className="nav-btn"
+          >
+            Previous
+          </button>
 
-        <label>Phone Number</label>
-        <input
-          type="tel"
-          name="phone"
-          placeholder="e.g., +250 123 456 789"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Service Type</label>
-        <select
-          name="service"
-          value={formData.service}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Service</option>
-          <option value="Protocol Management">Protocol Management</option>
-          <option value="Guest Handling">Guest Handling</option>
-          <option value="Event Planning">Event Planning</option>
-          <option value="Sound Systems">Sound Systems</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <label>Event Type</label>
-        <select
-          name="eventType"
-          value={formData.eventType}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Event Type</option>
-          <option value="Wedding">Wedding</option>
-          <option value="Corporate">Corporate</option>
-          <option value="Birthday">Birthday</option>
-          <option value="Concert">Concert</option>
-          <option value="Conference">Conference</option>
-          <option value="Other">Other</option>
-        </select>
-
-        <label>Event Date</label>
-        <input
-          type="date"
-          name="date"
-          value={formData.date}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Event Time</label>
-        <input
-          type="time"
-          name="time"
-          value={formData.time}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Event Location</label>
-        <input
-          type="text"
-          name="location"
-          placeholder="e.g., Kigali Convention Centre"
-          value={formData.location}
-          onChange={handleChange}
-          required
-        />
-
-        <label>Number of Guests</label>
-        <select
-          name="guests"
-          value={formData.guests}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select</option>
-          <option value="Less than 50">Less than 50</option>
-          <option value="50 - 100">50 - 100</option>
-          <option value="100 - 300">100 - 300</option>
-          <option value="300+">300+</option>
-        </select>
-
-        <label>Duration</label>
-        <select
-          name="duration"
-          value={formData.duration}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Duration</option>
-          <option value="1 hour">1 Hour</option>
-          <option value="2 hours">2 Hours</option>
-          <option value="Half Day">Half Day</option>
-          <option value="Full Day">Full Day</option>
-        </select>
-
-        <label>Special Requests / Notes</label>
-        <textarea
-          name="notes"
-          placeholder="Any additional instructions or details?"
-          value={formData.notes}
-          onChange={handleChange}
-          rows={4}
-        />
-
-        <button type="submit">Book Now</button>
+          {currentStep < questions.length - 1 ? (
+            <button type="button" onClick={handleNext} className="nav-btn">
+              Next
+            </button>
+          ) : (
+            <button type="submit" className="submit-btn">
+              Submit
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );

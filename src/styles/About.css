@@ -17,38 +17,48 @@
   justify-content: center;
   position: relative;
   text-align: center;
+  overflow: hidden;
 }
 
 .about-overlay {
-  background-color: rgba(11, 12, 42, 0.8);
-  color: #fff;
-  padding: 40px;
-  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(11, 12, 42, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 3rem;
   animation: fadeIn 2s ease-in-out;
 }
 
 .about-overlay h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 10px;
+  color: #ffffff;
 }
 
 .about-overlay .highlight {
-  color: rgb(178, 4, 4); /* Gold highlight */
+  color: #FE012F;
 }
 
 .about-overlay p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  color: #e0e0e0;
 }
 
 /* Story Section */
 .about-story {
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
   background-color: #f9f9f9;
 }
 
 .about-story h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: #0b0c2a;
   margin-bottom: 20px;
 }
@@ -56,12 +66,13 @@
 .about-story p {
   max-width: 800px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.8;
+  color: #555;
 }
 
 /* Gallery Section */
 .about-gallery {
-  padding: 60px 20px;
+  padding: 80px 20px;
   background-color: #fff;
   text-align: center;
 }
@@ -79,22 +90,25 @@
   animation: slideUp 1.5s ease;
 }
 
-.gallery-grid img {
+.gallery-grid img,
+.about-gallery img {
   width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
-.gallery-grid img:hover {
+.gallery-grid img:hover,
+.about-gallery img:hover {
   transform: scale(1.05);
 }
 
 /* Team Section */
 .about-team {
   background-color: #f0f0f5;
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
 }
 
@@ -114,33 +128,122 @@
 .member-card {
   background-color: #fff;
   border-radius: 15px;
-  padding: 20px;
-  width: 260px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  padding: 24px;
+  width: 280px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeIn 1.5s ease-in-out;
 }
 
 .member-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
 .member-card img {
   width: 100%;
-  height: 250px;
+  height: 260px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .member-card h3 {
   margin: 15px 0 5px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #0b0c2a;
 }
 
 .member-card p {
-  color: #555;
+  color: #666;
+  font-size: 1rem;
+}
+
+.detail-btn {
+  margin-top: 10px;
+  background-color: #0b0c2a;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.detail-btn:hover {
+  background-color: #FE012F;
+  color: #fff;
+}
+
+.member-details {
+  margin-top: 12px;
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 10px;
   font-size: 0.95rem;
+  color: #333;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: modalFadeIn 0.4s ease forwards;
+}
+
+.modal-overlay.fade-out {
+  animation: modalFadeOut 0.4s ease forwards;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  animation: modalZoomIn 0.4s ease forwards;
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
+}
+
+.modal-image:hover {
+  transform: scale(1.02);
+}
+
+.close-btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background-color: white;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  line-height: 30px;
+  text-align: center;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #ffd700;
+  color: #0b0c2a;
 }
 
 /* Animations */
@@ -166,125 +269,6 @@
   }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .about-overlay h1 {
-    font-size: 2rem;
-  }
-
-  .about-overlay p {
-    font-size: 1rem;
-  }
-
-  .member-card {
-    width: 90%;
-  }
-
-  .gallery-grid img {
-    height: 150px;
-  }
-
-  /* Fix about team images cropping on mobile */
-  .member-card img {
-    height: auto;               /* Maintain aspect ratio */
-    max-height: 450px;          /* Keep max height consistent */
-    object-fit: cover;
-    object-position: top center; /* Crop from top so heads are visible */
-  }
-}
-
-/* Change hero image on phones (max-width 480px) */
-@media (max-width: 480px) {
-  .about-hero {
-    background: url('/about-hero-mobile.jpeg') no-repeat center center/cover;
-  }
-}
-
-.about-gallery img {
-  width: 100%;
-  height: 250px;       /* Fixed height to keep slider uniform */
-  object-fit: cover;   /* Crop and fill */
-  border-radius: 8px;
-}
-
-/* Make images cursor pointer */
-.clickable-image {
-  cursor: pointer;
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* Modal overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-
-  /* Animate modal fade-in */
-  animation: modalFadeIn 0.4s ease forwards;
-}
-
-.modal-overlay.fade-out {
-  /* Animate fade-out */
-  animation: modalFadeOut 0.4s ease forwards;
-}
-
-/* Modal content box */
-.modal-content {
-  position: relative;
-  max-width: 90%;
-  max-height: 90%;
-  animation: modalZoomIn 0.4s ease forwards;
-}
-
-/* Modal image */
-.modal-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-  transition: transform 0.3s ease;
-}
-
-.modal-image:hover {
-  transform: scale(1.02);
-}
-
-/* Close button */
-.close-btn {
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  background-color: white;
-  border: none;
-  font-size: 2rem;
-  font-weight: bold;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  line-height: 30px;
-  text-align: center;
-  padding: 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  transition: background-color 0.3s ease;
-}
-
-.close-btn:hover {
-  background-color: #ffd700;
-  color: #0b0c2a;
-}
-
-/* Modal Animations */
 @keyframes modalFadeIn {
   from {
     opacity: 0;
@@ -314,25 +298,35 @@
   }
 }
 
-.detail-btn {
-  margin-top: 10px;
-  background-color: rgb(1, 1, 48);
-  color: white;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+/* Responsive */
+@media (max-width: 768px) {
+  .about-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .about-overlay p {
+    font-size: 1rem;
+  }
+
+  .member-card {
+    width: 90%;
+  }
+
+  .gallery-grid img,
+  .about-gallery img {
+    height: 180px;
+  }
+
+  .member-card img {
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    object-position: top center;
+  }
 }
 
-.detail-btn:hover {
-  background-color: black;
-}
-
-.member-details {
-  margin-top: 10px;
-  background: #f9f9f9;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #333;
+@media (max-width: 480px) {
+  .about-hero {
+    background: url('/about-hero-mobile.jpeg') no-repeat center center/cover;
+  }
 }
