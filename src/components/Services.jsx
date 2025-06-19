@@ -43,6 +43,15 @@ function Service() {
         'Flawless coordination is the foundation of every successful event. We handle every detail from the initial planning to the final execution with precision and care.',
     },
     {
+      id: 'catering',
+      title: 'Catering Services',
+      image: '/catering.jpeg',
+      alt: 'Catering is what we do best',
+      shortDesc: 'Precision event planning from start to finish.',
+      details:
+        'Flawless coordination is the foundation of every successful event. We handle every detail from the initial planning to the final execution with precision and care.',
+    },
+    {
       id: 'sound-systems',
       title: 'Sound Systems',
       image: '/indatwa-sounds.jpeg',
