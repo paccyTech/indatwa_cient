@@ -52,19 +52,12 @@ function App() {
           <Route
             path="/bookings"
             element={
-              <ProtectedRoute allowedRoles={['admin']}>
+              <ProtectedRoute allowedRoles={['admin' , 'superadmin']}>
                 <Bookings />
               </ProtectedRoute>
             }
           />
-           <Route
-            path="/bookings"
-            element={
-              <ProtectedRoute allowedRoles={['superadmin']}>
-                <Bookings />
-              </ProtectedRoute>
-            }
-          />
+          
           <Route
             path="/manage-users"
             element={
