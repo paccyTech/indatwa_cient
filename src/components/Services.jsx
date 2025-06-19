@@ -67,7 +67,7 @@ function Service() {
 
       {/* Services Section */}
       <section className="service-section">
-        <h2 className="visually-hidden">Our Services</h2>
+      <h2 className="service-title" data-aos="fade-up">Our Services</h2>
         {serviceDetails.map((service, index) => (
           <article
             className="service-card"

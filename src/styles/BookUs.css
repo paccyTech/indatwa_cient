@@ -1,180 +1,184 @@
-/* Keyframes for fade-in animation */
+/* Base Reset & Keyframes */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 @keyframes fadeInUp {
-  0% {
+  from {
     opacity: 0;
     transform: translateY(40px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes fadeInLeft {
-  0% {
+  from {
     opacity: 0;
     transform: translateX(-40px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
 @keyframes fadeInRight {
-  0% {
+  from {
     opacity: 0;
     transform: translateX(40px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-/* Global box-sizing */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/* Layout container */
+/* Layout Container */
 .booking-form {
   display: flex;
   min-height: 100vh;
-  height: 100vh;              /* Ensure container fills viewport height */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
+  background-color: #f7f9fc;
 }
 
-/* Left side - Background image */
+/* Left Image Section */
 .booking-image {
-  position: relative;        /* needed for overlay positioning */
-  flex: 0 0 60vw;            /* Fixed width */
-  height: 100vh;             /* Full viewport height */
-  background-image: url('/about.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation: fadeInLeft 1.5s ease-out forwards;
-  min-width: 300px;          /* prevent too narrow */
-  flex-shrink: 0;            /* prevent shrinking */
-  background-color: #222;
-  overflow: hidden;          /* contain overlay */
+  flex: 0 0 60vw;
+  height: 100vh;
+  background: url('/about.jpg') center/cover no-repeat;
+  position: relative;
+  animation: fadeInLeft 1.2s ease forwards;
 }
 
 .booking-image::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   background-color: rgba(12, 30, 60, 0.8);
-  pointer-events: none; /* allow clicks to pass through */
-  z-index: 1;           /* above the background image */
+  z-index: 1;
 }
 
-
-/* Right side - Booking form */
+/* Right Form Section */
 form {
-  flex: 1 1 auto;
-  height: 100vh;             /* Match image height */
-  overflow-y: auto;          /* Scroll inside form if content is tall */
-  background-color: #fff;
+  flex: 1;
   padding: 4rem 3rem;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  animation: fadeInRight 1.2s ease forwards;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
   max-width: 600px;
-  width: 100%;
-  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.05);
-  animation: fadeInRight 1.5s ease-out forwards;
-  margin: 0;                 /* Remove auto margins */
 }
 
-/* Heading */
+/* Form Headings */
 form h2 {
   font-size: 2rem;
+  font-weight: 700;
+  color: #0c1e3c;
   margin-bottom: 2rem;
-  color: #222;
   animation: fadeInUp 1s ease forwards;
 }
 
-/* Label */
-form label {
-  font-weight: 500;
-  margin-bottom: 0.4rem;
-  color: #333;
-  display: block;
-}
-
-/* Inputs, selects, textareas */
+/* Inputs and Textareas */
 form input,
 form select,
 form textarea {
-  width: 100%;
-  padding: 0.9rem;
+  padding: 1rem;
   margin-bottom: 1.2rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: 1px solid #d0d7e2;
+  border-radius: 8px;
   font-size: 1rem;
+  background-color: #fdfdfd;
   transition: 0.3s;
-  opacity: 0;
-  transform: translateY(20px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
   animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.3s;
 }
 
 form input:focus,
 form select:focus,
 form textarea:focus {
   border-color: #007bff;
-  outline: none;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  outline: none;
 }
 
-/* Button */
-form button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 1rem;
+/* Submit & Navigation Buttons */
+form button,
+.nav-btn,
+.submit-btn {
+  padding: 0.9rem 1.5rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
- 
+  transition: 0.3s ease;
   animation: fadeInUp 1s ease forwards;
-  animation-delay: 0.5s;
 }
 
-form button:hover {
+form button,
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+form button:hover,
+.submit-btn:hover {
   background-color: #0056b3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Messages */
+.nav-btn {
+  background-color: #0c1e3c;
+  color: #eee;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background-color: #1d2951;
+  color: #fff;
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Navigation Button Group */
+.form-navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Success & Error Messages */
 .form-message {
   margin-top: 1rem;
-  padding: 0.9rem;
-  border-radius: 6px;
+  padding: 1rem;
+  border-radius: 8px;
   font-size: 0.95rem;
   font-weight: 500;
   animation: fadeInUp 0.8s ease forwards;
 }
 
 .form-message.success {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: #d1f4e2;
+  color: #146c43;
 }
 
 .form-message.error {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: #fbe1e2;
+  color: #842029;
 }
 
-/* Responsive Design */
-/* Mobile image override */
+/* Responsive Adjustments */
 @media (max-width: 1024px) {
   .booking-form {
     flex-direction: column;
@@ -184,90 +188,192 @@ form button:hover {
   .booking-image {
     width: 100%;
     height: 40vh;
-    max-width: 100%;
-    max-height: none;
-    min-height: 250px;
-    background-image: url('/about.jpg');
-    background-size: cover;
-    animation: fadeInUp 1.5s ease-out forwards;
+    animation: fadeInUp 1.5s ease forwards;
   }
 
   form {
     max-width: 100%;
-    padding: 2.5rem;
-    height: auto;
-    overflow: visible;
-    animation: fadeInUp 1.5s ease-out forwards;
+    padding: 3rem 2rem;
   }
 }
 
 @media (max-width: 600px) {
-  .booking-image {
-    height: 50vh;
-    min-height: 300px;
+  form h2 {
+    font-size: 1.6rem;
   }
 
   form {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.2rem;
   }
 
-  form h2 {
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
-  }
-
-  form input,
-  form select,
-  form textarea {
-    font-size: 1rem;
-    padding: 0.8rem;
-  }
-
-  form button {
-    font-size: 1rem;
-    padding: 0.9rem;
+  .form-navigation-buttons {
+    flex-direction: column;
+    gap: 1rem;
   }
 }
-.form-navigation-buttons {
+
+/* Progress Bar Container */
+.progress-bar {
   display: flex;
-  justify-content: space-between;
+  margin-bottom: 2rem;
   gap: 1rem;
-  margin-top: 1.5rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
 }
 
-.nav-btn {
-  background-color: darkblue;
-  color: #ccc;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.3s ease;
+.progress-bar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
-.nav-btn:hover:not(:disabled) {
-  background-color: #bbb;
-}
+/* Each Step */
+.progress-step {
+  flex: 0 0 auto;
+  min-width: 90px;
+  text-align: center;
+  position: relative;
+  font-weight: 600;
+  color: #a0a9b8;
+  cursor: default;
+  font-size: 0.85rem;
+  padding: 0.5rem 0.3rem;
+  user-select: none;
 
-.nav-btn:disabled {
+  /* Truncate long labels */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* Animate fade and slide */
   opacity: 0.5;
-  cursor: not-allowed;
+  transform: translateY(10px);
+  animation: stepFadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--step-index) * 0.07s);
 }
 
-.submit-btn {
+/* To set animation delay via inline style in JS */
+.progress-step:nth-child(n) {
+  --step-index: calc(n - 1);
+}
+
+/* Circle before each step */
+.progress-step::before {
+  counter-increment: step;
+  content: counter(step);
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border: 2px solid #d0d7e2;
+  display: block;
+  text-align: center;
+  margin: 0 auto 0.25rem;
+  border-radius: 50%;
+  background-color: white;
+  color: #a0a9b8;
+  transition: all 0.3s ease;
+}
+
+/* Active Step Styling */
+.progress-step.active,
+.progress-step.completed {
+  color: #007bff;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Active and Completed circle styling */
+.progress-step.active::before,
+.progress-step.completed::before {
+  border-color: #007bff;
   background-color: #007bff;
   color: white;
-  padding: 0.9rem 1.8rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.submit-btn:hover {
-  background-color: #0056b3;
+/* Line connecting steps (except last) */
+.progress-step.completed::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: #007bff;
+  z-index: -1;
 }
+
+.progress-step:last-child::after {
+  content: none;
+}
+
+/* Animation keyframes */
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .booking-form {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .booking-image {
+    width: 100%;
+    height: 40vh;
+    animation: fadeInUp 1.5s ease forwards;
+  }
+
+  form {
+    max-width: 100%;
+    padding: 3rem 2rem;
+  }
+
+  /* Progress bar smaller min width for steps */
+  .progress-step {
+    min-width: 75px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  form h2 {
+    font-size: 1.6rem;
+  }
+
+  form {
+    padding: 2rem 1.2rem;
+  }
+
+  .form-navigation-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* On very small screens, show only circle number, hide label */
+  .progress-step {
+    min-width: 40px;
+    font-size: 0;
+    position: relative;
+  }
+  .progress-step::before {
+    margin-bottom: 0;
+  }
+  .progress-step:hover {
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 123, 255, 0.15);
+    border-radius: 4px;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+/* Other existing styles remain unchanged */

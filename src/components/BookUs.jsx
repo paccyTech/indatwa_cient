@@ -62,9 +62,26 @@ const BookUs = () => {
       <form onSubmit={handleSubmit}>
         <h2>Book Indatwa Events Services</h2>
 
-        <label>{currentField.label}</label>
+        {/* Progress Bar */}
+        <div className="progress-bar" aria-label="Form progress">
+          {questions.map((q, idx) => (
+            <div
+              key={idx}
+              className={`progress-step ${
+                idx === currentStep ? 'active' : idx < currentStep ? 'completed' : ''
+              }`}
+              title={q.label}  // Tooltip
+              aria-current={idx === currentStep ? 'step' : undefined}
+            >
+              {q.label}
+            </div>
+          ))}
+        </div>
+
+        <label htmlFor={currentField.name}>{currentField.label}</label>
         {currentField.type === 'select' ? (
           <select
+            id={currentField.name}
             name={currentField.name}
             value={formData[currentField.name] || ''}
             onChange={handleChange}
@@ -77,6 +94,7 @@ const BookUs = () => {
           </select>
         ) : currentField.type === 'textarea' ? (
           <textarea
+            id={currentField.name}
             name={currentField.name}
             value={formData[currentField.name] || ''}
             placeholder={currentField.placeholder || ''}
@@ -86,6 +104,7 @@ const BookUs = () => {
           />
         ) : (
           <input
+            id={currentField.name}
             type={currentField.type}
             name={currentField.name}
             value={formData[currentField.name] || ''}
