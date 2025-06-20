@@ -246,3 +246,34 @@
 .support-btn svg {
   vertical-align: middle;
 }
+
+/* Logo (Link clickable to home) */
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #000054;
+  text-decoration: none;
+  gap: 0.5rem;
+  user-select: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logo:hover {
+  color: #b91c1c;
+  transform: scale(1.05);
+}
+
+/* Optional: Adjust logo image on hover as well */
+.logo:hover .logo-img {
+  transform: rotate(-2deg);
+}
+
+.logo-img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}

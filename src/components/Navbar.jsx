@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaTimes, FaPhoneAlt, FaWhatsapp, FaLinkedinIn, FaHeadset } from 'react-icons/fa';
+import { FaBars, FaTimes, FaPhoneAlt, FaWhatsapp, FaLinkedinIn, FaUserTie } from 'react-icons/fa';
 import '../styles/Navbar.css';
-import { FaUserTie } from 'react-icons/fa'; 
-
 
 const Navbar = () => {
   const location = useLocation();
@@ -17,12 +15,9 @@ const Navbar = () => {
       setScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
-
-    // Cleanup
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when clicking a nav link
   const handleLinkClick = () => {
     setMenuOpen(false);
   };
@@ -31,10 +26,11 @@ const Navbar = () => {
     <>
       <nav className={`navbar ${scrolled ? 'navbar-bg' : ''}`}>
         <div className="navbar-container">
-          <div className="logo">
+          {/* Clickable Logo and Text */}
+          <Link to="/" className="logo" onClick={handleLinkClick}>
             <img src="/logo12.png" alt="Logo" className="logo-img" />
             Indatwa Events
-          </div>
+          </Link>
 
           <button
             className="menu-toggle"
@@ -66,13 +62,11 @@ const Navbar = () => {
                 Book Now
               </Link>
             </li>
-            {/* Support Button with icon */}
             <li>
               <Link
                 to="/apply"
                 className={isActive('/apply') + ' support-btn'}
                 onClick={handleLinkClick}
-                aria-label="Support"
               >
                 <FaUserTie style={{ marginRight: '6px' }} />
                 Apply For Ushers
@@ -86,15 +80,17 @@ const Navbar = () => {
       <div className="floating-sidebar">
         <a href="tel:+250788465959" className="sidebar-btn call" title="Call Us">
           <FaPhoneAlt />
+          <span className="icon-label">Call</span>
         </a>
         <a
-          href="https://wa.me/+250788465959"
+          href="https://wa.me/250788465959"
           target="_blank"
           rel="noopener noreferrer"
           className="sidebar-btn whatsapp"
           title="WhatsApp Us"
         >
           <FaWhatsapp />
+          <span className="icon-label">WhatsApp</span>
         </a>
         <a
           href="https://www.linkedin.com/in/yourprofile"
@@ -104,6 +100,7 @@ const Navbar = () => {
           title="LinkedIn Profile"
         >
           <FaLinkedinIn />
+          <span className="icon-label">LinkedIn</span>
         </a>
       </div>
     </>
